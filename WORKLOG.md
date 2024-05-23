@@ -15,7 +15,7 @@ info
 
 ### 5/22/2024
 
-info
+- made repo and made template of methods described in UML digram
 
 ### date y
 
