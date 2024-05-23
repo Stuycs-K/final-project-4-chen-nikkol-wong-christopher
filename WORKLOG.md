@@ -16,7 +16,7 @@ info
 ### 5/22/2024
 
 - made repo and made template of methods described in UML digram
-
+- wrote the left click and right click
 ### date y
 
 info
