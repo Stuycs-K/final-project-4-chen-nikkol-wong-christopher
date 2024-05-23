@@ -67,37 +67,13 @@ public class Minefield{
   }
   public void checkNeighs(int row, int col){
    int total = 0;
-   Cell current = grid[row][col-1];
-   if(current.getMine()){
-     total ++;
-   }
-   current = grid[row][col+1];
-   if(current.getMine()){
-     total ++;
-   }
-   current = grid[row+1][col+1];
-   if(current.getMine()){
-     total ++;
-   }
-   current = grid[row+1][col-1];
-   if(current.getMine()){
-     total ++;
-   }
-   current = grid[row+1][col];
-   if(current.getMine()){
-     total ++;
-   }
-   current = grid[row-1][col+1];
-   if(current.getMine()){
-     total ++;
-   }
-   current = grid[row-1][col-1];
-   if(current.getMine()){
-     total ++;
-   }
-   current = grid[row-1][col];
-   if(current.getMine()){
-     total ++;
+   for(int i = -1; i<2; i++){
+     for(int j = -1; j<2; j++){
+       Cell current = grid[row+i][col+j];
+       if(current.getMine()){
+         total ++;
+       }
+     }
    }
    grid[row][col].setMinesSurrounding(total); 
   }
