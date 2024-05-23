@@ -52,7 +52,8 @@ public class Minefield{
 
   public void leftClick(int x, int y){
     try {
-      grid[y/squareSize][x/squareSize].excavate();
+      //grid[y/squareSize][x/squareSize].excavate();
+      explore(y/squareSize,x/squareSize);
     }
     catch (ArrayIndexOutOfBoundsException e) {};
   }
@@ -62,10 +63,24 @@ public class Minefield{
     }
     catch (ArrayIndexOutOfBoundsException e) {}
   }
-  public boolean explore(int row, int column){
-    return true;
+  public void explore(int row, int column){
+    if(!grid[row][column].excavate()){ //assuming it's when there is no mine
+      if(checkNeighs(row,column) == 0){
+        explore(row, column +1);
+        explore(row, column -1);
+        explore(row+1, column);
+        explore(row+1, column +1);
+        explore(row+1, column -1);
+        explore(row-1, column);
+        explore(row-1,column+1);
+        explore(row-1,column-1);
+      }else{
+        Cell current = grid[row][column];
+        text(checkNeighs(row,column) + "", current.xcoord, current.ycoord, current.squareSize, current.squareSize);
+      }
+    }
   }
-  public void checkNeighs(int row, int col){
+  public int checkNeighs(int row, int col){
    int total = 0;
    for(int i = -1; i<2; i++){
      for(int j = -1; j<2; j++){
@@ -76,6 +91,7 @@ public class Minefield{
      }
    }
    grid[row][col].setMinesSurrounding(total); 
+   return total;
   }
   public void setSize(){
   }
