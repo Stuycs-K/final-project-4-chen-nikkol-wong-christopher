@@ -19,4 +19,12 @@ public class Cell {
   public void toggleFlag(){
     flag = !flag;
   }
+  
+  public boolean getMine() {
+    return mineHere;
+  }
+  
+  public void setMine(boolean mine) {
+    mineHere = mine;
+  }
 }

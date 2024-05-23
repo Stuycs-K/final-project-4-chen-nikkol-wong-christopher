@@ -4,8 +4,8 @@
 
 ### 5/22/2024
 
-- updated minefield and cell constructors
-- drew basic minefield grid in minefield constructor
+- updated minefield and cell constructor, drew basic minefield grid in minefield constructor
+- wrote setupGame() to place mines with additional Cell methods (getMine(), setMine()), temporarily colored in mines red
 
 ### date y
 
