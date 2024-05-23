@@ -61,14 +61,6 @@ public class Minefield{
     }
     catch (ArrayIndexOutOfBoundsException e) {}
   }
-  public void win(){
-  }
-  public void lose(){
-  }
-  public void restart(){
-  }
-  public void openSetting(){
-  }
   public void setSize(){
   }
   public void setMines(){
