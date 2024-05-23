@@ -13,9 +13,9 @@ void keyPressed(){
 
 void mousePressed(){
   if(mouseButton==LEFT){
-    map.leftClick(mouseY/50,mouseX/50);
+    map.leftClick(mouseX, mouseY);
   }
   if(mouseButton==RIGHT){
-    map.rightClick(mouseY/50,mouseX/50);
+    map.rightClick(mouseX, mouseY);
   }
 }
