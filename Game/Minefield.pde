@@ -49,17 +49,12 @@ public class Minefield{
     }
   }
   
-<<<<<<< HEAD
+
   public void leftClick(int x, int y){
     try {
       grid[y/squareSize][x/squareSize].excavate();
     }
     catch (ArrayIndexOutOfBoundsException e) {};
-=======
-  public void leftClick(int row, int col){
-    grid[row][col].excavate();
-    
->>>>>>> a25e992fd090ffc425434286be347aa4d399a564
   }
   public void rightClick(int x, int y){
     try {

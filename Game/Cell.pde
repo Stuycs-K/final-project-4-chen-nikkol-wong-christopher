@@ -57,4 +57,7 @@ public class Cell {
   public void setMine(boolean mine) {
     mineHere = mine;
   }
+  public void setMinesSurrounding(int value){
+    minesSurrounding = value;
+  }
 }
