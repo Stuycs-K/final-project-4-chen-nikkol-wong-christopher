@@ -15,8 +15,7 @@ public class Minefield{
     squareSize = width/grid.length;
     for (int row = 0; row < grid.length; row++) {
       for (int col = 0; col < grid.length; col++) {
-        grid[row][col] = new Cell();
-        rect(col * squareSize, row * squareSize, squareSize, squareSize);
+        grid[row][col] = new Cell(squareSize, col * squareSize, row * squareSize);
       }
     }
     
@@ -24,21 +23,21 @@ public class Minefield{
     totalMines = mines;
     settingsOpen = false;
     inGame = false;
-    setupGame();
+    placeMines();
     
     
-    fill(224, 80, 80);
+    /*fill(224, 80, 80);
     for (int row = 0; row < grid.length; row++) {
       for (int col = 0; col < grid.length; col++) {
         if (grid[row][col].getMine()) {
           rect(col * squareSize, row * squareSize, squareSize, squareSize);
         }
       }
-    }
+    }*/
   }
   
   //methods
-  public void setupGame(){
+  public void placeMines(){
     for (int i = 0; i < totalMines; i++) {
       int row = (int)(Math.random() * grid.length);
       int col = (int)(Math.random() * grid.length);
@@ -50,11 +49,17 @@ public class Minefield{
     }
   }
   
-  public void leftClick(int row, int col){
-    grid[row][col].excavate();
+  public void leftClick(int x, int y){
+    try {
+      grid[y/squareSize][x/squareSize].excavate();
+    }
+    catch (ArrayIndexOutOfBoundsException e) {};
   }
   public void rightClick(int row, int col){
-    grid[row][col].toggleFlag();
+    try {
+      grid[row][col].toggleFlag();
+    }
+    catch (ArrayIndexOutOfBoundsException e) {}
   }
   public void win(){
   }
