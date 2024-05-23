@@ -49,14 +49,6 @@ public class Minefield{
   public void rightClick(int row, int col){
     grid[row][col].toggleFlag();
   }
-  public void win(){
-  }
-  public void lose(){
-  }
-  public void restart(){
-  }
-  public void openSetting(){
-  }
   public void setSize(){
   }
   public void setMines(){
