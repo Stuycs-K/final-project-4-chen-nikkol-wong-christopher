@@ -19,13 +19,13 @@ public class Cell {
   }
   public boolean excavate(){
     if (!opened && !flag) {
+      opened = true;
       if (mineHere) {
         fill(0, 0, 255);
         rect(xcoord, ycoord, squareSize, squareSize);
         return true;
       }
       else {
-        opened = true;
         fill(255, 225, 128);
         rect(xcoord, ycoord, squareSize, squareSize);
       }
@@ -36,7 +36,18 @@ public class Cell {
     return minesSurrounding;
   }
   public void toggleFlag(){
-    flag = !flag;
+    if (!opened) {
+      if (flag) {
+        fill(80, 224, 80);
+        rect(xcoord, ycoord, squareSize, squareSize);
+        flag = false;
+      }
+      else {
+        fill(255, 0, 0);
+        circle(xcoord + squareSize/2.0, ycoord + squareSize/2.0, squareSize);
+        flag = true;
+      }
+    }
   }
   
   public boolean getMine() {

@@ -55,9 +55,9 @@ public class Minefield{
     }
     catch (ArrayIndexOutOfBoundsException e) {};
   }
-  public void rightClick(int row, int col){
+  public void rightClick(int x, int y){
     try {
-      grid[row][col].toggleFlag();
+      grid[y/squareSize][x/squareSize].toggleFlag();
     }
     catch (ArrayIndexOutOfBoundsException e) {}
   }
