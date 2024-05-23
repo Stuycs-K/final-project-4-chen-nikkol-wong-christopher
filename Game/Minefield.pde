@@ -49,17 +49,62 @@ public class Minefield{
     }
   }
   
+<<<<<<< HEAD
   public void leftClick(int x, int y){
     try {
       grid[y/squareSize][x/squareSize].excavate();
     }
     catch (ArrayIndexOutOfBoundsException e) {};
+=======
+  public void leftClick(int row, int col){
+    grid[row][col].excavate();
+    
+>>>>>>> a25e992fd090ffc425434286be347aa4d399a564
   }
   public void rightClick(int x, int y){
     try {
       grid[y/squareSize][x/squareSize].toggleFlag();
     }
     catch (ArrayIndexOutOfBoundsException e) {}
+  }
+  public boolean explore(int row, int column){
+    return true;
+  }
+  public void checkNeighs(int row, int col){
+   int total = 0;
+   Cell current = grid[row][col-1];
+   if(current.getMine()){
+     total ++;
+   }
+   current = grid[row][col+1];
+   if(current.getMine()){
+     total ++;
+   }
+   current = grid[row+1][col+1];
+   if(current.getMine()){
+     total ++;
+   }
+   current = grid[row+1][col-1];
+   if(current.getMine()){
+     total ++;
+   }
+   current = grid[row+1][col];
+   if(current.getMine()){
+     total ++;
+   }
+   current = grid[row-1][col+1];
+   if(current.getMine()){
+     total ++;
+   }
+   current = grid[row-1][col-1];
+   if(current.getMine()){
+     total ++;
+   }
+   current = grid[row-1][col];
+   if(current.getMine()){
+     total ++;
+   }
+   grid[row][col].setMinesSurrounding(total); 
   }
   public void setSize(){
   }
