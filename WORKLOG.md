@@ -1,8 +1,8 @@
 # Work Log
 
-## GROUP MEMBER 1
+## Christopher Wong
 
-### date x
+### 5/22/2024
 
 info
 
@@ -11,9 +11,9 @@ info
 info
 
 
-## GROUP MEMBER 2
+## Nikkol Chen
 
-### date x
+### 5/22/2024
 
 info
 
