@@ -7,6 +7,8 @@ public class Cell {
   public Cell(){
     flag = false;
     opened = false;
+    mineHere = false;
+    minesSurrounding = 0;
   }
   public boolean excavate(){
     return true;

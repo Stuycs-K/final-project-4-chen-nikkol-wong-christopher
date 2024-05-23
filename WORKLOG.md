@@ -4,7 +4,8 @@
 
 ### 5/22/2024
 
-info
+- updated minefield and cell constructors
+- drew basic minefield grid in minefield constructor
 
 ### date y
 
