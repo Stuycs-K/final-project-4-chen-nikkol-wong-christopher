@@ -7,7 +7,10 @@
 - updated minefield and cell constructor, drew basic minefield grid in minefield constructor
 - wrote setupGame() to place mines with additional Cell methods (getMine(), setMine()), temporarily colored in mines red
 
-### date y
+### 5/23/2024
+
+- wrote leftClick() and excavate() to open individual squares
+- wrote rightClick() and toggleFlag() to place and remove flags
 
 info
 
