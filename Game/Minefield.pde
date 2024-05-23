@@ -15,10 +15,13 @@ public class Minefield{
   }
   //methods
   public void setupGame(){
+    
   }
   public void leftClick(int row, int col){
+    grid[row][col].excavate();
   }
   public void rightClick(int row, int col){
+    grid[row][col].toggleFlag();
   }
   public void win(){
   }
