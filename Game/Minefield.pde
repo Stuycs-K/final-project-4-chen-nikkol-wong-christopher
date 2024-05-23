@@ -24,9 +24,17 @@ public class Minefield{
     totalMines = mines;
     settingsOpen = false;
     inGame = false;
+    setupGame();
+    
     
     fill(224, 80, 80);
-    setupGame();
+    for (int row = 0; row < grid.length; row++) {
+      for (int col = 0; col < grid.length; col++) {
+        if (grid[row][col].getMine()) {
+          rect(col * squareSize, row * squareSize, squareSize, squareSize);
+        }
+      }
+    }
   }
   
   //methods
@@ -39,7 +47,6 @@ public class Minefield{
         col = (int)(Math.random() * grid.length);
       }
       grid[row][col].setMine(true);
-      rect(col * squareSize, row * squareSize, squareSize, squareSize);
     }
   }
   
