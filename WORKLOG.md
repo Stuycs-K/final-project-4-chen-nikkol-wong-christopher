@@ -21,6 +21,8 @@ info
 
 - made repo and made template of methods described in UML digram
 - wrote the left click and right click
-### date y
 
-info
+### 5/23/2024
+
+- wrote setMinesSurrounding(int) and checkNeighs() involving grabbing mine data from neighbors
+- wrote excavate() to do more widespread excavating/ recursive implementation --> did not succeed in displaying text
