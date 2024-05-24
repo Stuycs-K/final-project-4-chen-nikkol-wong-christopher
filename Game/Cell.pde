@@ -18,17 +18,15 @@ public class Cell {
   }
   
   public boolean excavate(){
-    if (!opened && !flag) {
-      opened = true;
-      if (mineHere) {
-        fill(0, 0, 255);
-        rect(xcoord, ycoord, squareSize, squareSize);
-        return true;
-      }
-      else {
-        fill(255, 225, 128);
-        rect(xcoord, ycoord, squareSize, squareSize);
-      }
+    opened = true;
+    if (mineHere) {
+      fill(0, 0, 255);
+      rect(xcoord, ycoord, squareSize, squareSize);
+      return true;
+    }
+    else {
+      fill(255, 225, 128);
+      rect(xcoord, ycoord, squareSize, squareSize);
     }
     return false;
   }
@@ -58,5 +56,9 @@ public class Cell {
 
   public boolean isOpen() {
     return opened;
+  }
+  
+  public boolean hasFlag() {
+    return flag;
   }
 }

@@ -41,42 +41,39 @@ public class Minefield {
     }
   }
   
-  public void leftClicker(int x, int y) {
-    leftClick(y/squareSize, x/squareSize); 
+  public void leftClick(int x, int y) {
+    explore(y/squareSize, x/squareSize); 
   }
 
-
-  public void leftClick(int row, int column) {
-    try {
+  public void explore(int row, int column) {
+    if (row < grid.length && column < grid.length && row >= 0 && column >= 0) {
       Cell target = grid[row][column];
-      if (!target.isOpen()) {
+      if (!target.isOpen() && !target.hasFlag()) {
         int neighbors = checkNeighs(row, column);
-         boolean mined = target.excavate();
+        boolean mined = target.excavate();
          if (!mined) {
            if (neighbors == 0) {
-             leftClick(row, column + 1);
-             leftClick(row, column - 1);
-             leftClick(row+1, column);
-             leftClick(row+1, column + 1);
-             leftClick(row+1, column - 1);
-             leftClick(row-1, column);
-             leftClick(row-1, column+1);
-             leftClick(row-1, column-1);
+             explore(row, column + 1);
+             explore(row, column - 1);
+             explore(row+1, column);
+             explore(row+1, column + 1);
+             explore(row+1, column - 1);
+             explore(row-1, column);
+             explore(row-1, column+1);
+             explore(row-1, column-1);
            }
            else{
              fill(0, 0, 0);
              text(checkNeighs(row, column) + "", target.xcoord + squareSize/2.0, target.ycoord + squareSize * 3/4.0);
            }
          }
+         else {}
        }
     }
-    catch (ArrayIndexOutOfBoundsException e) {};
   }
   public void rightClick(int x, int y) {
-    try {
+    if (x >= 0 && y >= 0 && x < grid.length * squareSize && y < grid.length * squareSize) {
       grid[y/squareSize][x/squareSize].toggleFlag();
-    }
-    catch (ArrayIndexOutOfBoundsException e) {
     }
   }
   
