@@ -12,6 +12,8 @@
 - wrote leftClick() and excavate() to open individual squares
 - wrote rightClick() and toggleFlag() to place and remove flags
 
+- finished leftClick() and combined it with explore() --> added text and fixed various errors so it works as intended
+
 info
 
 
