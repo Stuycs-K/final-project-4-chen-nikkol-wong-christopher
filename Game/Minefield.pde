@@ -47,30 +47,30 @@ public class Minefield {
 
 
   public void leftClick(int row, int column) {
-    Cell target = grid[row][column];
-    if (!target.isOpen()) {
-      try {
-        checkNeighs(row, column);
-        int result = target.excavate();
-        if (result == 2) {
-          leftClick(row, column + 1);
-          leftClick(row, column - 1);
-          leftClick(row+1, column);
-          leftClick(row+1, column + 1);
-          leftClick(row+1, column - 1);
-          leftClick(row-1, column);
-          leftClick(row-1, column+1);
-          leftClick(row-1, column-1);
-        }
-        else if (result == 1){
-          fill(0, 0, 0);
-          text(checkNeighs(row, column) + "", target.xcoord + squareSize/2.0, target.ycoord + squareSize/1.5);
-        }
-        //explore(y/squareSize, x/squareSize);
-      }
-      catch (ArrayIndexOutOfBoundsException e) {
-      };
+    try {
+      Cell target = grid[row][column];
+      if (!target.isOpen()) {
+        int neighbors = checkNeighs(row, column);
+         boolean mined = target.excavate();
+         if (!mined) {
+           if (neighbors == 0) {
+             leftClick(row, column + 1);
+             leftClick(row, column - 1);
+             leftClick(row+1, column);
+             leftClick(row+1, column + 1);
+             leftClick(row+1, column - 1);
+             leftClick(row-1, column);
+             leftClick(row-1, column+1);
+             leftClick(row-1, column-1);
+           }
+           else{
+             fill(0, 0, 0);
+             text(checkNeighs(row, column) + "", target.xcoord + squareSize/2.0, target.ycoord + squareSize * 3/4.0);
+           }
+         }
+       }
     }
+    catch (ArrayIndexOutOfBoundsException e) {};
   }
   public void rightClick(int x, int y) {
     try {
@@ -79,35 +79,20 @@ public class Minefield {
     catch (ArrayIndexOutOfBoundsException e) {
     }
   }
-  /*public void explore(int row, int column) {
-    if (!grid[row][column].excavate() && !grid[row][column].isOpen()) { //assuming it's when there is no mine
-      if (checkNeighs(row, column) == 0) {
-        explore(row, column +1);
-        explore(row, column -1);
-        explore(row+1, column);
-        explore(row+1, column +1);
-        explore(row+1, column -1);
-        explore(row-1, column);
-        explore(row-1, column+1);
-        explore(row-1, column-1);
-      } else {
-        Cell current = grid[row][column];
-        fill(0, 0, 0);
-        text(checkNeighs(row, column) + "", current.xcoord, current.ycoord, current.squareSize, current.squareSize);
-      }
-    }
-  }*/
+  
   public int checkNeighs(int row, int col) {
     int total = 0;
     for (int i = -1; i<2; i++) {
       for (int j = -1; j<2; j++) {
-        Cell current = grid[row+i][col+j];
-        if (current.getMine()) {
-          total ++;
+        try {
+          Cell current = grid[row+i][col+j];
+          if (current.getMine()) {
+            total ++;
+          }
         }
+        catch (ArrayIndexOutOfBoundsException e) {};
       }
     }
-    grid[row][col].setMinesSurrounding(total);
     return total;
   }
   public void setSize() {
