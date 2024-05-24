@@ -13,7 +13,7 @@ void keyPressed(){
 
 void mousePressed(){
   if(mouseButton==LEFT){
-    map.leftClick(mouseX, mouseY);
+    map.leftClicker(mouseX, mouseY);
   }
   if(mouseButton==RIGHT){
     map.rightClick(mouseX, mouseY);

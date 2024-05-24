@@ -17,20 +17,29 @@ public class Cell {
     ycoord = y;
     rect(xcoord, ycoord, squareSize, squareSize);
   }
-  public boolean excavate(){
+  
+  /*
+  0: mine found
+  1: no mine, but neighbors
+  2: no mine and no neighbors
+  */
+  public int excavate(){
     if (!opened && !flag) {
       opened = true;
       if (mineHere) {
         fill(0, 0, 255);
         rect(xcoord, ycoord, squareSize, squareSize);
-        return true;
+        return 0;
       }
       else {
         fill(255, 225, 128);
         rect(xcoord, ycoord, squareSize, squareSize);
       }
     }
-    return false;
+    if (minesSurrounding == 0) {
+      return 2;
+    }
+    return 1;
   }
   public int getNeighbor(){
     return minesSurrounding;
@@ -59,5 +68,8 @@ public class Cell {
   }
   public void setMinesSurrounding(int value){
     minesSurrounding = value;
+  }
+  public boolean isOpen() {
+    return opened;
   }
 }
