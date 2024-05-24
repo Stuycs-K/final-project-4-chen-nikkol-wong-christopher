@@ -50,7 +50,7 @@ public class Cell {
     return mineHere;
   }
   
-  public void setMine(boolean mine) {
+  public void placeMine(boolean mine) {
     mineHere = mine;
   }
 

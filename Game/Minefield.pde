@@ -37,7 +37,7 @@ public class Minefield {
         row = (int)(Math.random() * grid.length);
         col = (int)(Math.random() * grid.length);
       }
-      grid[row][col].setMine(true);
+      grid[row][col].placeMine(true);
     }
   }
   
@@ -81,19 +81,18 @@ public class Minefield {
     int total = 0;
     for (int i = -1; i<2; i++) {
       for (int j = -1; j<2; j++) {
-        try {
+        if (row + i >= 0 && col + j >= 0 && row + i < grid.length && col + j < grid.length) {
           Cell current = grid[row+i][col+j];
           if (current.getMine()) {
             total ++;
           }
         }
-        catch (ArrayIndexOutOfBoundsException e) {};
       }
     }
     return total;
   }
   public void setSize() {
   }
-  public void setMines() {
+  public void setNumMines() {
   }
 }
