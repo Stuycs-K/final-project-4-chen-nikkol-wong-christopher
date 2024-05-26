@@ -25,7 +25,7 @@ public class Cell {
       return true;
     }
     else {
-      fill(255, 225, 128);
+      fill(245, 222, 159);
       rect(xcoord, ycoord, squareSize, squareSize);
     }
     return false;
@@ -34,7 +34,7 @@ public class Cell {
   public void toggleFlag(){
     if (!opened) {
       if (flag) {
-        fill(80, 224, 80);
+        fill(60, 201, 91);
         rect(xcoord, ycoord, squareSize, squareSize);
         flag = false;
       }

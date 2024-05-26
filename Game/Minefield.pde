@@ -7,10 +7,10 @@ public class Minefield {
   boolean inGame;
 
   public Minefield() {
-    this(15, 200);
+    this(15, 40);
   }
   public Minefield(int size, int mines) {
-    fill(80, 224, 80);
+    fill(60, 201, 91);
     textSize(24);
     textAlign(CENTER);
     grid = new Cell[size][size];
@@ -73,19 +73,26 @@ public class Minefield {
   public void printNeighbors(int num, int row, int col) {
     if (num == 1) {
       fill(0, 0, 200);
-    } else if (num == 2) {
+    }
+    else if (num == 2) {
       fill(0, 200, 0);
-    } else if (num == 3) {
+    }
+    else if (num == 3) {
       fill(200, 0, 0);
-    } else if (num == 4) {
+    } 
+    else if (num == 4) {
       fill(200, 0, 200);
-    } else if (num == 5) {
-      fill(164, 164, 0);
-    } else if (num == 6) {
+    }
+    else if (num == 5) {
+      fill(222, 163, 0);
+    }
+    else if (num == 6) {
       fill(0, 200, 200);
-    } else if (num == 7) {
+    }
+    else if (num == 7) {
       fill(64, 64, 64);
-    } else if (num == 8) {
+    }
+    else if (num == 8) {
       fill(164, 164, 164);
     }
     text(num + "", col * squareSize, row * squareSize + squareSize / 4.0, squareSize, squareSize);
