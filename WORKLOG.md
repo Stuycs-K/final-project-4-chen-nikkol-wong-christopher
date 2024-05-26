@@ -14,8 +14,12 @@
 
 - finished leftClick() and combined it with explore() --> added text and fixed various errors so it works as intended
 
-info
+### 5/24/2024 and 5/25/2024
 
+- Edited clicking methods for edge cases regarding boundary issues
+- Added checks for flags in leftClick()/explore() to make flags work as intended
+- Added different colors for different numbers of neighbors and fixed text boxes
+- Renamed methods for clarity
 
 ## Nikkol Chen
 
