@@ -3,6 +3,8 @@ public class Minefield {
   int foundFlags;
   int totalMines;
   int squareSize;
+  boolean minesPlaced;
+  
   boolean settingsOpen;
   boolean inGame;
 
@@ -25,23 +27,27 @@ public class Minefield {
     totalMines = mines;
     settingsOpen = false;
     inGame = false;
-    placeMines();
+    minesPlaced = false;
   }
 
   //methods
-  public void placeMines() {
+  public void placeMines(int clickedRow, int clickedCol) {
     for (int i = 0; i < totalMines; i++) {
       int row = (int)(Math.random() * grid.length);
       int col = (int)(Math.random() * grid.length);
-      while (grid[row][col].getMine()) {
+      while (grid[row][col].getMine() || (row == clickedRow && col == clickedCol)) {
         row = (int)(Math.random() * grid.length);
         col = (int)(Math.random() * grid.length);
       }
       grid[row][col].placeMine(true);
     }
+    minesPlaced = true;
   }
 
   public void leftClick(int x, int y) {
+    if (!minesPlaced) {
+      placeMines(y/squareSize, x/squareSize);
+    }
     explore(y/squareSize, x/squareSize);
   }
 
@@ -100,8 +106,10 @@ public class Minefield {
 
 
   public void rightClick(int x, int y) {
-    if (x >= 0 && y >= 0 && x < grid.length * squareSize && y < grid.length * squareSize) {
-      grid[y/squareSize][x/squareSize].toggleFlag();
+    if (minesPlaced) {
+      if (x >= 0 && y >= 0 && x < grid.length * squareSize && y < grid.length * squareSize) {
+        grid[y/squareSize][x/squareSize].toggleFlag();
+      }
     }
   }
 
