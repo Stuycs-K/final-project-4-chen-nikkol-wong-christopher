@@ -21,6 +21,12 @@
 - Added different colors for different numbers of neighbors and fixed text boxes
 - Renamed methods for clarity
 
+### 5/28/2024
+
+- Edited placeMines() to place mines on first click and to never start on a mine
+- Wrote win() and simple win procedure
+- Added interactions with Displays class
+
 ## Nikkol Chen
 
 ### 5/22/2024
