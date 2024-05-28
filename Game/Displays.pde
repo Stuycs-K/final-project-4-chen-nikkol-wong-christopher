@@ -3,6 +3,7 @@ public class Displays{
     
   }
   public void win(){
+    println("WIN!");
     
   }
   public void lose(){

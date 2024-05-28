@@ -4,6 +4,7 @@ public class Minefield {
   int totalMines;
   int squareSize;
   boolean minesPlaced;
+  int openedSquares;
   
   boolean settingsOpen;
   boolean inGame;
@@ -28,6 +29,7 @@ public class Minefield {
     settingsOpen = false;
     inGame = false;
     minesPlaced = false;
+    openedSquares = 0;
   }
 
   //methods
@@ -49,6 +51,11 @@ public class Minefield {
       placeMines(y/squareSize, x/squareSize);
     }
     explore(y/squareSize, x/squareSize);
+    println(openedSquares);
+    if (openedSquares + totalMines == grid.length * grid.length) {
+      result = new Displays();
+      result.win();
+    }
   }
 
   public void explore(int row, int column) {
@@ -58,6 +65,7 @@ public class Minefield {
         int neighbors = checkNeighs(row, column);
         boolean mined = target.excavate();
         if (!mined) {
+          openedSquares++;
           if (neighbors == 0) {
             explore(row, column + 1);
             explore(row, column - 1);
