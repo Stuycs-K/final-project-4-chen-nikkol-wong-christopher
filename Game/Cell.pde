@@ -18,13 +18,6 @@ public class Cell {
   }
   
   public boolean excavate(){
-<<<<<<< HEAD
-    
-    return true;
-  }
-  public int getNeighbor(){
-    return minesSurrounding;
-=======
     opened = true;
     if (mineHere) {
       fill(0, 0, 255);
@@ -36,7 +29,6 @@ public class Cell {
       rect(xcoord, ycoord, squareSize, squareSize);
     }
     return false;
->>>>>>> e1d3f63bfa108ec774379018ae65d1cc3c845085
   }
 
   public void toggleFlag(){
@@ -58,14 +50,7 @@ public class Cell {
     return mineHere;
   }
   
-<<<<<<< HEAD
-  public void setMinesSurrounding(int mine){
-    minesSurrounding = mine;
-  }
-  public void setMine(boolean mine) {
-=======
   public void placeMine(boolean mine) {
->>>>>>> e1d3f63bfa108ec774379018ae65d1cc3c845085
     mineHere = mine;
   }
 
