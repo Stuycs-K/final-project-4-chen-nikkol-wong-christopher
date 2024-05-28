@@ -1,18 +1,17 @@
 public class Minefield {
   Cell[][] grid;
+  Displays show;
   int foundFlags;
   int totalMines;
   int squareSize;
   boolean minesPlaced;
   int openedSquares;
-  
-  boolean settingsOpen;
-  boolean inGame;
 
-  public Minefield() {
-    this(15, 40);
+  public Minefield(Displays d) {
+    this(d, 15, 40);
   }
-  public Minefield(int size, int mines) {
+  public Minefield(Displays d, int size, int mines) {
+    show = d;
     fill(60, 201, 91);
     textSize(24);
     textAlign(CENTER);
@@ -26,8 +25,6 @@ public class Minefield {
     
     foundFlags = 0;
     totalMines = mines;
-    settingsOpen = false;
-    inGame = false;
     minesPlaced = false;
     openedSquares = 0;
   }
@@ -51,10 +48,8 @@ public class Minefield {
       placeMines(y/squareSize, x/squareSize);
     }
     explore(y/squareSize, x/squareSize);
-    println(openedSquares);
     if (openedSquares + totalMines == grid.length * grid.length) {
-      result = new Displays();
-      result.win();
+      show.win();
     }
   }
 
@@ -79,8 +74,7 @@ public class Minefield {
             printNeighbors(neighbors, row, column);
           }
         } else {
-          result = new Displays();
-          result.lose();
+          show.lose();
         }
       }
     }
@@ -136,9 +130,5 @@ public class Minefield {
       }
     }
     return total;
-  }
-  public void setSize() {
-  }
-  public void setNumMines() {
   }
 }
