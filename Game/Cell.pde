@@ -11,6 +11,7 @@ public class Cell {
     minesSurrounding = 0;
   }
   public boolean excavate(){
+    
     return true;
   }
   public int getNeighbor(){
@@ -24,6 +25,9 @@ public class Cell {
     return mineHere;
   }
   
+  public void setMinesSurrounding(int mine){
+    minesSurrounding = mine;
+  }
   public void setMine(boolean mine) {
     mineHere = mine;
   }
