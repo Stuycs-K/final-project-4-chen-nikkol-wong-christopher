@@ -20,7 +20,7 @@ public class Minefield {
         grid[row][col] = new Cell(squareSize, col * squareSize, row * squareSize);
       }
     }
-
+    
     foundFlags = 0;
     totalMines = mines;
     settingsOpen = false;
@@ -65,6 +65,8 @@ public class Minefield {
             printNeighbors(neighbors, row, column);
           }
         } else {
+          result = new Displays();
+          result.lose();
         }
       }
     }
