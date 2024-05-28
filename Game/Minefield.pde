@@ -35,7 +35,7 @@ public class Minefield {
     for (int i = 0; i < totalMines; i++) {
       int row = (int)(Math.random() * grid.length);
       int col = (int)(Math.random() * grid.length);
-      while (grid[row][col].getMine() || (row == clickedRow && col == clickedCol)) {
+      while (grid[row][col].getMine() || (Math.abs(clickedRow - row) <= 1 && Math.abs(clickedCol - col) <= 1)) {
         row = (int)(Math.random() * grid.length);
         col = (int)(Math.random() * grid.length);
       }
