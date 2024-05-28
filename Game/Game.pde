@@ -5,7 +5,7 @@ void setup(){
   map = new Minefield();
 }
 
-void draw(){
+void draw() {
 }
 
 void keyPressed(){
