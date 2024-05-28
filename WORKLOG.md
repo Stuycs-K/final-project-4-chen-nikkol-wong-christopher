@@ -12,8 +12,14 @@
 - wrote leftClick() and excavate() to open individual squares
 - wrote rightClick() and toggleFlag() to place and remove flags
 
-info
+- finished leftClick() and combined it with explore() --> added text and fixed various errors so it works as intended
 
+### 5/24/2024 and 5/25/2024
+
+- Edited clicking methods for edge cases regarding boundary issues
+- Added checks for flags in leftClick()/explore() to make flags work as intended
+- Added different colors for different numbers of neighbors and fixed text boxes
+- Renamed methods for clarity
 
 ## Nikkol Chen
 
@@ -21,6 +27,8 @@ info
 
 - made repo and made template of methods described in UML digram
 - wrote the left click and right click
-### date y
 
-info
+### 5/23/2024
+
+- wrote setMinesSurrounding(int) and checkNeighs() involving grabbing mine data from neighbors
+- wrote excavate() to do more widespread excavating/ recursive implementation --> did not succeed in displaying text

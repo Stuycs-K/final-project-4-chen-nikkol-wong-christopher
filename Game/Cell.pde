@@ -2,7 +2,6 @@ public class Cell {
   boolean flag;
   boolean opened;
   boolean mineHere;
-  int minesSurrounding;
   int squareSize;
   int xcoord;
   int ycoord;
@@ -11,34 +10,31 @@ public class Cell {
     flag = false;
     opened = false;
     mineHere = false;
-    minesSurrounding = 0;
+    //minesSurrounding = 0;
     squareSize = size;
     xcoord = x;
     ycoord = y;
     rect(xcoord, ycoord, squareSize, squareSize);
   }
+  
   public boolean excavate(){
-    if (!opened && !flag) {
-      opened = true;
-      if (mineHere) {
-        fill(0, 0, 255);
-        rect(xcoord, ycoord, squareSize, squareSize);
-        return true;
-      }
-      else {
-        fill(255, 225, 128);
-        rect(xcoord, ycoord, squareSize, squareSize);
-      }
+    opened = true;
+    if (mineHere) {
+      fill(0, 0, 255);
+      rect(xcoord, ycoord, squareSize, squareSize);
+      return true;
+    }
+    else {
+      fill(245, 222, 159);
+      rect(xcoord, ycoord, squareSize, squareSize);
     }
     return false;
   }
-  public int getNeighbor(){
-    return minesSurrounding;
-  }
+
   public void toggleFlag(){
     if (!opened) {
       if (flag) {
-        fill(80, 224, 80);
+        fill(60, 201, 91);
         rect(xcoord, ycoord, squareSize, squareSize);
         flag = false;
       }
@@ -54,10 +50,15 @@ public class Cell {
     return mineHere;
   }
   
-  public void setMine(boolean mine) {
+  public void placeMine(boolean mine) {
     mineHere = mine;
   }
-  public void setMinesSurrounding(int value){
-    minesSurrounding = value;
+
+  public boolean isOpen() {
+    return opened;
+  }
+  
+  public boolean hasFlag() {
+    return flag;
   }
 }
