@@ -10,7 +10,6 @@ public class Cell {
     flag = false;
     opened = false;
     mineHere = false;
-    //minesSurrounding = 0;
     squareSize = size;
     xcoord = x;
     ycoord = y;
