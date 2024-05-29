@@ -1,6 +1,6 @@
 Displays result;
 void setup(){
-  size(500,500);
+  size(500,550);
   result = new Displays();
 }
 

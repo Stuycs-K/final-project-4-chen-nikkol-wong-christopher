@@ -4,6 +4,8 @@ public class Displays{
   boolean inGame;
   
   public Displays(){
+    fill(color(200,255,200));
+    rect(0, 0, width, 50);
     map = new Minefield(this);
     settingsOpen = false;
     inGame = true;  
