@@ -1,5 +1,5 @@
 Minefield map;
-
+Displays result;
 void setup(){
   size(500,500);
   map = new Minefield();
@@ -9,11 +9,8 @@ void draw(){
 }
 
 void keyPressed(){
-  for (int i = 0; i < height; i++) {
-    for (int j = 0; i < width; j++) {
-    
-    }
-  }
+  result = new Displays();
+  result.restart();
 }
 
 void mousePressed(){
