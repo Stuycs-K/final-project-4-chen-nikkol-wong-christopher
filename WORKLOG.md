@@ -38,3 +38,8 @@
 
 - wrote setMinesSurrounding(int) and checkNeighs() involving grabbing mine data from neighbors
 - wrote excavate() to do more widespread excavating/ recursive implementation --> did not succeed in displaying text
+
+### 5/28/2024
+- Wrote lose() with placeholder losing screen
+- Wrote restart() and accessed it through keyPressed()
+
