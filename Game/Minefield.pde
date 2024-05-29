@@ -6,6 +6,7 @@ public class Minefield {
   int squareSize;
   boolean minesPlaced;
   int openedSquares;
+  boolean lost;
 
 
   public Minefield(Displays d) {
@@ -28,6 +29,7 @@ public class Minefield {
     totalMines = mines;
     minesPlaced = false;
     openedSquares = 0;
+    lost = false;
   }
 
   //methods
@@ -76,6 +78,7 @@ public class Minefield {
           }
         } else {
           show.lose();
+          lost = true;
         }
       }
     }

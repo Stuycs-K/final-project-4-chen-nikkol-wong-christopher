@@ -1,5 +1,4 @@
 public class Displays{
-  boolean lost;
   Minefield map;
   boolean settingsOpen;
   boolean inGame;
@@ -7,9 +6,7 @@ public class Displays{
   public Displays(){
     map = new Minefield(this);
     settingsOpen = false;
-    inGame = true;
-    lost = false;
-    
+    inGame = true;  
   }
   public void win(){
     fill(255,255,255);
@@ -30,7 +27,6 @@ public class Displays{
     textSize(15);
     text("Press Any Key to Restart", width/2, height/2+50);
     inGame = false;
-    lost = true;
   }
   public void restart(){
     map = new Minefield(this);
@@ -56,10 +52,10 @@ public class Displays{
     if(settingsOpen == true){
       settingsOpen = false;
       show();
-      if(!lost){
-        inGame = true;
-      }else{
+      if(map.lost){
         lose();
+      }else{
+        inGame = true;
       }
     }else{
       settingsOpen = true;
