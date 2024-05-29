@@ -7,6 +7,7 @@ public class Minefield {
   
   boolean settingsOpen;
   boolean inGame;
+  boolean lost;
 
   public Minefield() {
     this(15, 40);
@@ -28,6 +29,9 @@ public class Minefield {
     settingsOpen = false;
     inGame = false;
     minesPlaced = false;
+    placeMines();
+    lost = false;
+
   }
 
   //methods
@@ -54,7 +58,7 @@ public class Minefield {
   public void explore(int row, int column) {
     if (row < grid.length && column < grid.length && row >= 0 && column >= 0) {
       Cell target = grid[row][column];
-      if (!target.isOpen() && !target.hasFlag()) {
+      if (!target.isOpen() && !target.hasFlag() && !lost) {
         int neighbors = checkNeighs(row, column);
         boolean mined = target.excavate();
         if (!mined) {
@@ -71,6 +75,7 @@ public class Minefield {
             printNeighbors(neighbors, row, column);
           }
         } else {
+          lost = true;
           result = new Displays();
           result.lose();
         }
