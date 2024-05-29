@@ -42,4 +42,5 @@
 ### 5/28/2024
 - Wrote lose() with placeholder losing screen
 - Wrote restart() and accessed it through keyPressed()
+- worked on openSetting() and the mechanisms involved with opening it during gameplay, after losing, and closing the settings tab
 
