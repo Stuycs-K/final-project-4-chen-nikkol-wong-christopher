@@ -57,7 +57,7 @@ public class Minefield {
   public void explore(int row, int column) {
     if (row < grid.length && column < grid.length && row >= 0 && column >= 0) {
       Cell target = grid[row][column];
-      if (!target.isOpen() && !target.hasFlag() && !lost) {
+      if (!target.isOpen() && !target.hasFlag()) {
         int neighbors = checkNeighs(row, column);
         boolean mined = target.excavate();
         if (!mined) {
