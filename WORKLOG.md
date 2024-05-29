@@ -21,6 +21,12 @@
 - Added different colors for different numbers of neighbors and fixed text boxes
 - Renamed methods for clarity
 
+### 5/28/2024
+
+- Edited placeMines() to place mines on first click and to never start on a mine
+- Wrote win() and simple win procedure
+- Added interactions with Displays class
+
 ## Nikkol Chen
 
 ### 5/22/2024
@@ -32,3 +38,9 @@
 
 - wrote setMinesSurrounding(int) and checkNeighs() involving grabbing mine data from neighbors
 - wrote excavate() to do more widespread excavating/ recursive implementation --> did not succeed in displaying text
+
+### 5/28/2024
+- Wrote lose() with placeholder losing screen
+- Wrote restart() and accessed it through keyPressed()
+- worked on openSetting() and the mechanisms involved with opening it during gameplay, after losing, and closing the settings tab
+

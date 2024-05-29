@@ -1,18 +1,19 @@
 public class Minefield {
   Cell[][] grid;
+  Displays show;
   int foundFlags;
   int totalMines;
   int squareSize;
   boolean minesPlaced;
-  
-  boolean settingsOpen;
-  boolean inGame;
+  int openedSquares;
   boolean lost;
 
-  public Minefield() {
-    this(15, 40);
+
+  public Minefield(Displays d) {
+    this(d, 15, 40);
   }
-  public Minefield(int size, int mines) {
+  public Minefield(Displays d, int size, int mines) {
+    show = d;
     fill(60, 201, 91);
     textSize(24);
     textAlign(CENTER);
@@ -26,12 +27,9 @@ public class Minefield {
     
     foundFlags = 0;
     totalMines = mines;
-    settingsOpen = false;
-    inGame = false;
     minesPlaced = false;
-    placeMines();
+    openedSquares = 0;
     lost = false;
-
   }
 
   //methods
@@ -53,15 +51,19 @@ public class Minefield {
       placeMines(y/squareSize, x/squareSize);
     }
     explore(y/squareSize, x/squareSize);
+    if (openedSquares + totalMines == grid.length * grid.length) {
+      show.win();
+    }
   }
 
   public void explore(int row, int column) {
     if (row < grid.length && column < grid.length && row >= 0 && column >= 0) {
       Cell target = grid[row][column];
-      if (!target.isOpen() && !target.hasFlag() && !lost) {
+      if (!target.isOpen() && !target.hasFlag()) {
         int neighbors = checkNeighs(row, column);
         boolean mined = target.excavate();
         if (!mined) {
+          openedSquares++;
           if (neighbors == 0) {
             explore(row, column + 1);
             explore(row, column - 1);
@@ -75,9 +77,8 @@ public class Minefield {
             printNeighbors(neighbors, row, column);
           }
         } else {
+          show.lose();
           lost = true;
-          result = new Displays();
-          result.lose();
         }
       }
     }
@@ -134,8 +135,18 @@ public class Minefield {
     }
     return total;
   }
-  public void setSize() {
-  }
-  public void setNumMines() {
+  public void shows(){
+    for(int i = 0; i<grid.length; i++){
+     for(int j = 0; j<grid[0].length; j++){
+       grid[i][j].reveal();
+       if(grid[i][j].isOpen()){
+         if(grid[i][j].mineHere){
+           continue;
+         }
+         int num = checkNeighs(i,j);
+         printNeighbors(num,i, j);
+       }
+     }
+    }
   }
 }

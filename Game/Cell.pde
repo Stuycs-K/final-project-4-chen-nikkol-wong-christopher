@@ -10,7 +10,6 @@ public class Cell {
     flag = false;
     opened = false;
     mineHere = false;
-    //minesSurrounding = 0;
     squareSize = size;
     xcoord = x;
     ycoord = y;
@@ -60,5 +59,25 @@ public class Cell {
   
   public boolean hasFlag() {
     return flag;
+  }
+  public void reveal(){
+    if(opened){
+      fill(245, 222, 159);
+      rect(xcoord, ycoord, squareSize, squareSize);
+      if(mineHere){
+        fill(0, 0, 255);
+        rect(xcoord, ycoord, squareSize, squareSize);
+      }
+    }else{
+      if(flag){
+        fill(60, 201, 91);
+        rect(xcoord, ycoord, squareSize, squareSize);
+        fill(255, 0, 0);
+        circle(xcoord + squareSize/2.0, ycoord + squareSize/2.0, squareSize);
+      }else{
+        fill(60, 201, 91);
+        rect(xcoord, ycoord, squareSize, squareSize);
+      }
+    }
   }
 }
