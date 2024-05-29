@@ -132,4 +132,18 @@ public class Minefield {
     }
     return total;
   }
+  public void shows(){
+    for(int i = 0; i<grid.length; i++){
+     for(int j = 0; j<grid[0].length; j++){
+       grid[i][j].reveal();
+       if(grid[i][j].isOpen()){
+         if(grid[i][j].mineHere){
+           continue;
+         }
+         int num = checkNeighs(i,j);
+         printNeighbors(num,i, j);
+       }
+     }
+    }
+  }
 }

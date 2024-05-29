@@ -8,7 +8,16 @@ void draw() {
 }
 
 void keyPressed(){
-  result.restart();
+  if(result.settingsOpen == true && key=='s'){
+    result.openSettings();
+  }else{
+    if(key != 's'){
+      result.restart();
+    }
+    if(key == 's'){
+      result.openSettings();
+    }
+  }
 }
 
 void mousePressed(){
