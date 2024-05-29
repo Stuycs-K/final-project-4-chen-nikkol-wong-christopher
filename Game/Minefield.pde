@@ -1,16 +1,18 @@
 public class Minefield {
   Cell[][] grid;
+  Displays show;
   int foundFlags;
   int totalMines;
   int squareSize;
-  boolean settingsOpen;
-  boolean inGame;
-  boolean lost;
+  boolean minesPlaced;
+  int openedSquares;
 
-  public Minefield() {
-    this(15, 40);
+
+  public Minefield(Displays d) {
+    this(d, 15, 40);
   }
-  public Minefield(int size, int mines) {
+  public Minefield(Displays d, int size, int mines) {
+    show = d;
     fill(60, 201, 91);
     textSize(24);
     textAlign(CENTER);
@@ -24,27 +26,32 @@ public class Minefield {
     
     foundFlags = 0;
     totalMines = mines;
-    settingsOpen = false;
-    inGame = false;
-    placeMines();
-    lost = false;
+    minesPlaced = false;
+    openedSquares = 0;
   }
 
   //methods
-  public void placeMines() {
+  public void placeMines(int clickedRow, int clickedCol) {
     for (int i = 0; i < totalMines; i++) {
       int row = (int)(Math.random() * grid.length);
       int col = (int)(Math.random() * grid.length);
-      while (grid[row][col].getMine()) {
+      while (grid[row][col].getMine() || (Math.abs(clickedRow - row) <= 1 && Math.abs(clickedCol - col) <= 1)) {
         row = (int)(Math.random() * grid.length);
         col = (int)(Math.random() * grid.length);
       }
       grid[row][col].placeMine(true);
     }
+    minesPlaced = true;
   }
 
   public void leftClick(int x, int y) {
+    if (!minesPlaced) {
+      placeMines(y/squareSize, x/squareSize);
+    }
     explore(y/squareSize, x/squareSize);
+    if (openedSquares + totalMines == grid.length * grid.length) {
+      show.win();
+    }
   }
 
   public void explore(int row, int column) {
@@ -54,6 +61,7 @@ public class Minefield {
         int neighbors = checkNeighs(row, column);
         boolean mined = target.excavate();
         if (!mined) {
+          openedSquares++;
           if (neighbors == 0) {
             explore(row, column + 1);
             explore(row, column - 1);
@@ -67,9 +75,7 @@ public class Minefield {
             printNeighbors(neighbors, row, column);
           }
         } else {
-          lost = true;
-          result = new Displays();
-          result.lose();
+          show.lose();
         }
       }
     }
@@ -105,8 +111,10 @@ public class Minefield {
 
 
   public void rightClick(int x, int y) {
-    if (x >= 0 && y >= 0 && x < grid.length * squareSize && y < grid.length * squareSize) {
-      grid[y/squareSize][x/squareSize].toggleFlag();
+    if (minesPlaced) {
+      if (x >= 0 && y >= 0 && x < grid.length * squareSize && y < grid.length * squareSize) {
+        grid[y/squareSize][x/squareSize].toggleFlag();
+      }
     }
   }
 
@@ -123,9 +131,5 @@ public class Minefield {
       }
     }
     return total;
-  }
-  public void setSize() {
-  }
-  public void setNumMines() {
   }
 }
