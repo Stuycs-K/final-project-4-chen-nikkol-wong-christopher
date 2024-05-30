@@ -4,6 +4,8 @@ public class Displays{
   boolean inGame;
   Handle[] handles;
   boolean firstMousePress;
+  int currentSize;
+  int totalMines;
   
   public Displays(){
     fill(color(200,255,200));
@@ -17,6 +19,8 @@ public class Displays{
     settingsOpen = false;
     inGame = true; 
     firstMousePress = false;
+    currentSize = 15;
+    totalMines = 40;
   }
   public void changeFirst(){
     firstMousePress = !firstMousePress;
@@ -42,7 +46,7 @@ public class Displays{
     inGame = false;
   }
   public void restart(){
-    map = new Minefield(this);
+    map = new Minefield(this, currentSize, totalMines);
     inGame = true;
   }
   
@@ -113,8 +117,12 @@ public class Displays{
         result.changeFirst();
     }
   }
-  public void setSize() {
+  public void setSize(int size) {
+    currentSize = size;
+    map = new Minefield(this, currentSize, totalMines);
   }
-  public void setNumMines() {
+  public void setNumMines(int mines) {
+    totalMines = mines;
+    map = new Minefield(this, currentSize, totalMines);
   }
 }
