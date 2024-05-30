@@ -7,7 +7,7 @@ Group Members: Nikkol Chen and Christopher Wong
 Group Name: The Stuy 51ers
 ## Overview
 ### Brief Description: 
-	For our project, we plan to recreate Minesweeper in Processing. It will likely be mostly similar to regular Minesweeper. Left-clicking will explore a square, either excavating the square and its surroundings or finding a mine and ending the game. Right-clicking places flags to mark potential mines, preventing those squares from being left-clicked unless the flag is removed by right-clicking again. We hope to add settings to toggle the board size and the number of mines. We also hope to add cool graphics if time allows, especially when finding a mine or winning.
+For our project, we plan to recreate Minesweeper in Processing. It will likely be mostly similar to regular Minesweeper. Left-clicking will explore a square, either excavating the square and its surroundings or finding a mine and ending the game. Right-clicking places flags to mark potential mines, preventing those squares from being left-clicked unless the flag is removed by right-clicking again. We hope to add settings to toggle the board size and the number of mines. We also hope to add cool graphics if time allows, especially when finding a mine or winning.
 
 ### Expanded Description: 
 Critical Features:
