@@ -8,21 +8,17 @@ void draw() {
 }
 
 void keyPressed(){
-  if(result.settingsOpen == true && key=='s'){
-    result.openSettings();
-  }else{
-    if(key != 's'){
-      result.restart();
-    }
-    if(key == 's'){
-      result.openSettings();
-    }
-  }
+  result.restart();
 }
 
 void mousePressed(){
   if(mouseButton==LEFT){
-    result.leftClick(mouseX, mouseY);
+    if (mouseY < 50 && mouseX < 100) {
+      result.openSettings();
+    }
+    else {
+      result.leftClick(mouseX, mouseY);
+    }
   }
   if(mouseButton==RIGHT){
     result.rightClick(mouseX, mouseY);

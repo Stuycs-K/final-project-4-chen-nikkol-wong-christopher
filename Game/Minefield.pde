@@ -15,8 +15,6 @@ public class Minefield {
   public Minefield(Displays d, int size, int mines) {
     show = d;
     fill(60, 201, 91);
-    textSize(24);
-    textAlign(CENTER);
     grid = new Cell[size][size];
     squareSize = width/grid.length;
     for (int row = 0; row < grid.length; row++) {

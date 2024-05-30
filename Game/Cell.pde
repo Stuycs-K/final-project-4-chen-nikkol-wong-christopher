@@ -46,6 +46,8 @@ public class Cell {
   }
   
   public void printNeighbors(int num) {
+    textSize(24);
+    textAlign(CENTER);
     if (num == 1) {
       fill(0, 0, 200);
     }
@@ -70,7 +72,7 @@ public class Cell {
     else if (num == 8) {
       fill(164, 164, 164);
     }
-    text(num + "", xcoord, ycoord + squareSize/4.0, squareSize, squareSize);
+    text(num + "", xcoord, ycoord + squareSize/4, squareSize, squareSize);
   }
   
   public boolean getMine() {
