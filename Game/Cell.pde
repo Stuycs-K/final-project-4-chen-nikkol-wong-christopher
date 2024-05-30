@@ -46,7 +46,6 @@ public class Cell {
   }
   
   public void printNeighbors(int num) {
-    textSize(24);
     textAlign(CENTER);
     if (num == 1) {
       fill(0, 0, 200);
