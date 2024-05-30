@@ -27,6 +27,13 @@
 - Wrote win() and simple win procedure
 - Added interactions with Displays class
 
+### 5/29/2024
+
+- Added demo branch
+- Looked into Processing examples to learn how to use Handles (no commits in class because I was reading and testing)
+- Added display bar to top with "button" to open settings
+
+
 ## Nikkol Chen
 
 ### 5/22/2024

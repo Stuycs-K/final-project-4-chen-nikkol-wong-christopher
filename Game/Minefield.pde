@@ -15,13 +15,11 @@ public class Minefield {
   public Minefield(Displays d, int size, int mines) {
     show = d;
     fill(60, 201, 91);
-    textSize(24);
-    textAlign(CENTER);
     grid = new Cell[size][size];
     squareSize = width/grid.length;
     for (int row = 0; row < grid.length; row++) {
       for (int col = 0; col < grid.length; col++) {
-        grid[row][col] = new Cell(squareSize, col * squareSize, row * squareSize);
+        grid[row][col] = new Cell(squareSize, col * squareSize, row * squareSize + 50);
       }
     }
     
@@ -47,6 +45,7 @@ public class Minefield {
   }
 
   public void leftClick(int x, int y) {
+    y = y - 50;
     if (!minesPlaced) {
       placeMines(y/squareSize, x/squareSize);
     }
@@ -74,7 +73,7 @@ public class Minefield {
             explore(row-1, column+1);
             explore(row-1, column-1);
           } else {
-            printNeighbors(neighbors, row, column);
+            target.printNeighbors(neighbors);
           }
         } else {
           show.lose();
@@ -84,37 +83,10 @@ public class Minefield {
     }
   }
 
-  public void printNeighbors(int num, int row, int col) {
-    if (num == 1) {
-      fill(0, 0, 200);
-    }
-    else if (num == 2) {
-      fill(0, 200, 0);
-    }
-    else if (num == 3) {
-      fill(200, 0, 0);
-    } 
-    else if (num == 4) {
-      fill(200, 0, 200);
-    }
-    else if (num == 5) {
-      fill(222, 163, 0);
-    }
-    else if (num == 6) {
-      fill(0, 200, 200);
-    }
-    else if (num == 7) {
-      fill(64, 64, 64);
-    }
-    else if (num == 8) {
-      fill(164, 164, 164);
-    }
-    text(num + "", col * squareSize, row * squareSize + squareSize / 4.0, squareSize, squareSize);
-  }
-
 
   public void rightClick(int x, int y) {
     if (minesPlaced) {
+      y = y - 50;
       if (x >= 0 && y >= 0 && x < grid.length * squareSize && y < grid.length * squareSize) {
         grid[y/squareSize][x/squareSize].toggleFlag();
       }
@@ -144,7 +116,7 @@ public class Minefield {
            continue;
          }
          int num = checkNeighs(i,j);
-         printNeighbors(num,i, j);
+         grid[i][j].printNeighbors(num);
        }
      }
     }
