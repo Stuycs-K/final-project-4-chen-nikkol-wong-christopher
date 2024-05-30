@@ -27,6 +27,13 @@
 - Wrote win() and simple win procedure
 - Added interactions with Displays class
 
+### 5/29/2024
+
+- Added demo branch
+- Looked into Processing examples to learn how to use Handles (no commits in class because I was reading and testing)
+- Added display bar to top with "button" to open settings
+
+
 ## Nikkol Chen
 
 ### 5/22/2024
@@ -43,4 +50,8 @@
 - Wrote lose() with placeholder losing screen
 - Wrote restart() and accessed it through keyPressed()
 - worked on openSetting() and the mechanisms involved with opening it during gameplay, after losing, and closing the settings tab
+
+### 5/29/2024
+- examined the code at the Handles example under GUI for settings
+- initial implementation of Handles into Displays --> settings
 
