@@ -45,6 +45,36 @@ public class Cell {
     }
   }
   
+  public void printNeighbors(int num) {
+    textSize(24);
+    textAlign(CENTER);
+    if (num == 1) {
+      fill(0, 0, 200);
+    }
+    else if (num == 2) {
+      fill(0, 200, 0);
+    }
+    else if (num == 3) {
+      fill(200, 0, 0);
+    } 
+    else if (num == 4) {
+      fill(200, 0, 200);
+    }
+    else if (num == 5) {
+      fill(222, 163, 0);
+    }
+    else if (num == 6) {
+      fill(0, 200, 200);
+    }
+    else if (num == 7) {
+      fill(64, 64, 64);
+    }
+    else if (num == 8) {
+      fill(164, 164, 164);
+    }
+    text(num + "", xcoord, ycoord + squareSize/4.0, squareSize, squareSize);
+  }
+  
   public boolean getMine() {
     return mineHere;
   }
