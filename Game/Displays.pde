@@ -63,28 +63,23 @@ public class Displays{
   }
   
   public void show(){
-    map.shows();
+    map.redraw();
   }
   public void openSettings(){
     if(settingsOpen == true){
       settingsOpen = false;
       show();
-      fill(color(200,255,200));
-      rect(0, 0, width, 50);
-      rect(5, 5, 100, 40);
-      fill(0);
-      textSize(20);
-      text("Settings", 5, 15, 100, 25);
       if(map.lost){
         lose();
-      }else{
+      }
+      else if (map.won) {
+        win();
+      }
+      else{
         inGame = true;
       }
     }else{
       settingsOpen = true;
-      fill(0,0,0);
-      textSize(25);
-      text("Settings", width/2, height/2-85);
       inGame = false;
       //slider code
       handles = new Handle[2];

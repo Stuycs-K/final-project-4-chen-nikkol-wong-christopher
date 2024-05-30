@@ -5,6 +5,7 @@ public class Cell {
   int squareSize;
   int xcoord;
   int ycoord;
+  int numNeighbors;
   
   public Cell(int size, int x, int y){
     flag = false;
@@ -13,6 +14,7 @@ public class Cell {
     squareSize = size;
     xcoord = x;
     ycoord = y;
+    numNeighbors = 0;
     rect(xcoord, ycoord, squareSize, squareSize);
   }
   
@@ -46,6 +48,7 @@ public class Cell {
   }
   
   public void printNeighbors(int num) {
+    numNeighbors = num;
     textAlign(CENTER);
     if (num == 1) {
       fill(0, 0, 200);
@@ -89,24 +92,25 @@ public class Cell {
   public boolean hasFlag() {
     return flag;
   }
-  public void reveal(){
+  public void redraw(){
     if(opened){
-      fill(245, 222, 159);
-      rect(xcoord, ycoord, squareSize, squareSize);
-      if(mineHere){
+      if (mineHere) {
         fill(0, 0, 255);
         rect(xcoord, ycoord, squareSize, squareSize);
       }
-    }else{
-      if(flag){
-        fill(60, 201, 91);
+      else {
+        fill(245, 222, 159);
         rect(xcoord, ycoord, squareSize, squareSize);
-        fill(255, 0, 0);
-        circle(xcoord + squareSize/2.0, ycoord + squareSize/2.0, squareSize);
-      }else{
-        fill(60, 201, 91);
-        rect(xcoord, ycoord, squareSize, squareSize);
+        printNeighbors(numNeighbors);
       }
+    }
+    else {
+      fill(60, 201, 91);
+      rect(xcoord, ycoord, squareSize, squareSize);
+    }
+    if (flag) {
+      fill(255, 0, 0);
+      circle(xcoord + squareSize/2.0, ycoord + squareSize/2.0, squareSize);
     }
   }
 }
