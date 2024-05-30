@@ -13,11 +13,12 @@ void keyPressed(){
 
 void mousePressed(){
   if(mouseButton==LEFT){
-    if (mouseY < 50 && mouseX < 100) {
-      result.openSettings();
-    }
-    else {
+    if (mouseY > 50) {
       result.leftClick(mouseX, mouseY);
+      
+    }
+    else if (mouseY > 5 && mouseY < 45 && mouseX > 5 && mouseX < 105){
+      result.openSettings();
     }
   }
   if(mouseButton==RIGHT){

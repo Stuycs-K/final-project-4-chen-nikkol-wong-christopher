@@ -6,9 +6,11 @@ public class Displays{
   public Displays(){
     fill(color(200,255,200));
     rect(0, 0, width, 50);
+    rect(5, 5, 100, 40);
     fill(0);
     textSize(20);
-    text("Settings", 10, 30);
+    textAlign(CENTER);
+    text("Settings", 5, 15, 100, 25);
     map = new Minefield(this);
     settingsOpen = false;
     inGame = true;  
@@ -69,7 +71,7 @@ public class Displays{
       fill(0,0,0);
       textSize(25);
       text("Settings", width/2, height/2-85);
-      textSize(15);
+      //textSize(15);
       //text("Press Any Key to Restart", width/2, height/2+50);
       inGame = false;
     }

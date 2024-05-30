@@ -72,7 +72,7 @@ public class Cell {
     else if (num == 8) {
       fill(164, 164, 164);
     }
-    text(num + "", xcoord, ycoord + squareSize/4, squareSize, squareSize);
+    text(num + "", xcoord, ycoord + squareSize/4.0, squareSize, squareSize);
   }
   
   public boolean getMine() {
