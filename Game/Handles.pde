@@ -69,9 +69,11 @@ class Handle {
     boxx = x+stretch - size/2;
     boxy = y - size/2;
     others = o;
-    firstMousePress = false;
+    firstMousePress = true;
   }
-
+  public void changeFirst(){
+    firstMousePress = !firstMousePress;
+  }
   void update() {
     boxx = x+stretch;
     boxy = y - size/2;

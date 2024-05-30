@@ -18,9 +18,7 @@ public class Displays{
     inGame = true; 
     firstMousePress = false;
   }
-  public void changeFirst(){
-    firstMousePress = !firstMousePress;
-  }
+  
   public void win(){
     fill(255,255,255);
     rect(width/4,height/4,width/2,height/2);
@@ -101,16 +99,33 @@ public class Displays{
     }
     if (firstMousePress) {
       firstMousePress = false;
+      
+      for (int i = 0; i < handles.length; i++) {
+          handles[i].changeFirst();
+      }
+      
     }
   }
   public void mouseR(){
-    for (int i = 0; i < result.handles.length; i++) {
-      result.handles[i].releaseEvent();
+    for (int i = 0; i < handles.length; i++) {
+      handles[i].releaseEvent();
     }    
+    if (firstMousePress) {
+      firstMousePress = false;
+      
+      for (int i = 0; i < handles.length; i++) {
+          handles[i].changeFirst();
+      }
+      
+    }
   }
+  
   public void mouseP(){
-    if (!result.firstMousePress) {
-        result.changeFirst();
+    if (!firstMousePress) {
+        firstMousePress = true;
+        for (int i = 0; i < handles.length; i++) {
+          handles[i].changeFirst();
+        }  
     }
   }
   public void setSize() {
