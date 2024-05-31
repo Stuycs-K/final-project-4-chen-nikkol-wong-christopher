@@ -22,7 +22,9 @@ void mousePressed(){
     }
     else if (mouseY > 5 && mouseY < 45 && mouseX > 5 && mouseX < 105){
       result.openSettings();
-      result.mouseP();
+      if(result.settingsOpen){
+        result.mouseP();
+      }
     }
   }
   if(mouseButton==RIGHT){

@@ -49,8 +49,9 @@ void mouseReleasedH() {
   }
 }
 */
-class Handle {
-  boolean firstMousePress;
+Handle[] handles; 
+boolean firstMousePress;
+class Handle{
   int x, y;
   int boxx, boxy;
   int stretch;
@@ -69,10 +70,7 @@ class Handle {
     boxx = x+stretch - size/2;
     boxy = y - size/2;
     others = o;
-    firstMousePress = true;
-  }
-  public void changeFirst(){
-    firstMousePress = !firstMousePress;
+    //firstMousePress = false;
   }
   void update() {
     boxx = x+stretch;
