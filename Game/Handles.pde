@@ -4,51 +4,6 @@
  * Click and drag the white boxes to change their position.
  */
 
-
-
-
-//True if a mouse button has just been pressed while no other button was.
-
-/*
-void setupH() {
-  size(640, 360);
-  handles = new Handle[2];
-  for (int i = 0; i < handles.length; i++) {
-    handles[i] = new Handle(width/3, height/3+(i*70), 5, 10, handles);
-  }
-}
-
-void drawH() {
-  background(153);
-
-  for (int i = 0; i < handles.length; i++) {
-    handles[i].update();
-    handles[i].display();
-  }
-
-  //fill(0);
-  //rect(0, 0, width/2, height);
-
-  //After it has been used in the sketch, set it back to false
-  if (firstMousePress) {
-    firstMousePress = false;
-  }
-}
-
-
-void mousePressedH() {
-  
-  if (!firstMousePress) {
-    firstMousePress = true;
-  }
-}
-
-void mouseReleasedH() {
-  for (int i = 0; i < handles.length; i++) {
-    handles[i].releaseEvent();
-  }
-}
-*/
 class Handle {
   boolean firstMousePress;
   int x, y;
@@ -59,39 +14,27 @@ class Handle {
   boolean press;
   boolean locked = false;
   boolean otherslocked = false;
-  Handle[] others; // array of handles
 
-  Handle(int ix, int iy, int il, int is, Handle[] o) {
+  Handle(int ix, int iy, int il, int is) {
     x = ix;
     y = iy;
     stretch = il;
     size = is;
     boxx = x+stretch - size/2;
     boxy = y - size/2;
-    others = o;
     firstMousePress = false;
   }
 
   void update() {
-    boxx = x+stretch;
+    boxx = x+stretch * 3/2;
     boxy = y - size/2;
-
-    for (int i=0; i<others.length; i++) {
-      if (others[i].locked == true) {
-        otherslocked = true;
-        break;
-      } else {
-        otherslocked = false;
-      }
-    }
-
     if (otherslocked == false) {
       overEvent();
       pressEvent();
     }
 
     if (press) {
-      stretch = lock(mouseX-width/4-size/2, 0, 240);
+      stretch = lock(mouseX-width/2-size/2, 0, width/2-size-1);
     }
   }
 
@@ -104,9 +47,10 @@ class Handle {
   }
 
   void pressEvent() {
-    if (over && firstMousePress || locked) {
+    if (over || locked) {
       press = true;
       locked = true;
+      println("Press!");
     } else {
       press = false;
     }
@@ -117,6 +61,9 @@ class Handle {
   }
 
   void display() {
+    
+    background(color(29,113,43));
+    textAlign(CENTER);
     fill(color(200,255,200));
     rect(0, 0, width, 50);
     rect(5, 5, 100, 40);

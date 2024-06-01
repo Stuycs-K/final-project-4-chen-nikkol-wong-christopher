@@ -8,6 +8,7 @@ public class Displays{
   int totalMines;
   
   public Displays(){
+    background(color(29,113,43));
     fill(color(200,255,200));
     rect(0, 0, width, 50);
     rect(5, 5, 100, 40);
@@ -21,9 +22,6 @@ public class Displays{
     firstMousePress = false;
     currentSize = 15;
     totalMines = 40;
-  }
-  public void changeFirst(){
-    firstMousePress = !firstMousePress;
   }
   public void win(){
     fill(255,255,255);
@@ -82,18 +80,14 @@ public class Displays{
       settingsOpen = true;
       inGame = false;
       //slider code
-      handles = new Handle[2];
+      handles = new Handle[1];
       for (int i = 0; i < handles.length; i++) {
-        handles[i] = new Handle(width/4, height/2+(i*200), 5, 10, handles);
+        handles[i] = new Handle(width/4, height/2+(i*200), 0, 10);
       }
-      drawH();
-      mouseR();
-      mouseP();
       //slider code
     }
   }
   public void drawH(){
-    background(color(29,113,43));
     for (int i = 0; i < handles.length; i++) {
       handles[i].update();
       handles[i].display();
@@ -103,13 +97,13 @@ public class Displays{
     }
   }
   public void mouseR(){
-    for (int i = 0; i < result.handles.length; i++) {
-      result.handles[i].releaseEvent();
+    for (int i = 0; i < handles.length; i++) {
+      handles[i].releaseEvent();
     }    
   }
   public void mouseP(){
-    if (!result.firstMousePress) {
-        result.changeFirst();
+    if (!firstMousePress) {
+       firstMousePress = true;
     }
   }
   public void setSize(int size) {
@@ -119,5 +113,9 @@ public class Displays{
   public void setNumMines(int mines) {
     totalMines = mines;
     map = new Minefield(this, currentSize, totalMines);
+  }
+  
+  public boolean isSettingsOpen() {
+    return settingsOpen;
   }
 }

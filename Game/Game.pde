@@ -6,7 +6,7 @@ void setup(){
 }
 
 void draw() {
-  if(result.settingsOpen){
+  if(result.isSettingsOpen()){
     result.drawH();
   }
 }
@@ -16,16 +16,16 @@ void keyPressed(){
 }
 
 void mousePressed(){
-  if(mouseButton==LEFT){
-    if (mouseY > 50) {
-      result.leftClick(mouseX, mouseY);
-    }
-    else if (mouseY > 5 && mouseY < 45 && mouseX > 5 && mouseX < 105){
-      result.openSettings();
-      result.mouseP();
-    }
+  if (mouseY > 5 && mouseY < 45 && mouseX > 5 && mouseX < 105){
+    result.openSettings();
   }
-  if(mouseButton==RIGHT){
+  else if (result.isSettingsOpen()) {
+    result.mouseP();
+  }
+  else if(mouseButton==LEFT){
+    result.leftClick(mouseX, mouseY);
+  }
+  else if(mouseButton==RIGHT){
     result.rightClick(mouseX, mouseY);
   }
 }

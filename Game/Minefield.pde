@@ -48,12 +48,14 @@ public class Minefield {
 
   public void leftClick(int x, int y) {
     y = y - 50;
-    if (!minesPlaced) {
-      placeMines(y/squareSize, x/squareSize);
-    }
-    explore(y/squareSize, x/squareSize);
-    if (openedSquares + totalMines == grid.length * grid.length) {
-      show.win();
+    if (x >= 0 && y >= 0 && x < grid.length * squareSize && y < grid.length * squareSize) {
+      if (!minesPlaced) {
+        placeMines(y/squareSize, x/squareSize);
+      }
+      explore(y/squareSize, x/squareSize);
+      if (openedSquares + totalMines == grid.length * grid.length) {
+        show.win();
+      }
     }
   }
 
