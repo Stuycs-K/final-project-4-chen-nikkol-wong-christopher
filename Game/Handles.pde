@@ -111,6 +111,7 @@ class Handle {
   void releaseEvent() {
     locked = false;
   }
+  
 
   void display() {
     fill(color(200,255,200));
@@ -126,6 +127,17 @@ class Handle {
     textSize(50);
     text("# of Mines", width/4, height/4+45, 250, 50);
     text("Board Size", width/4, height/4+250, 250, 50);
+    
+    fill(255);
+    rect(x+270, y-100, 50,50);
+    
+    
+    line(x + 0, y-5, x, y+5);
+    line(x + 50, y-5, x+50, y+5);
+    line(x + 100, y-5, x+100, y+5);
+    line(x + 150, y-5, x+150, y+5);
+    line(x + 200, y-5, x+200, y+5);
+    line(x + 250, y-5, x+250, y+5);
     line(x, y, x+250, y);
     fill(255);
     stroke(0);
