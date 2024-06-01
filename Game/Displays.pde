@@ -5,6 +5,9 @@ public class Displays{
   int currentSize;
   int totalMines;
   
+  Handle[] handles;
+  boolean firstMousePress;
+  
   public Displays(){
     background(color(29,113,43));
     fill(color(200,255,200));
@@ -17,7 +20,7 @@ public class Displays{
     map = new Minefield(this);
     settingsOpen = false;
     inGame = true; 
-    firstMousePress = false;
+
     currentSize = 15;
     totalMines = 40;
   }
@@ -76,13 +79,18 @@ public class Displays{
         inGame = true;
       }
     }else{
+      firstMousePress = false;
       settingsOpen = true;
       inGame = false;
 
-      setupH();
+      handles = new Handle[2];
+      for (int i = 0; i < handles.length; i++) {
+        handles[i] = new Handle(width/4, height/2+(i*200), 0, 10, handles, this);
+      }
     }
   }
-  public void drawH(){
+  
+  void drawHandles() {
     if (settingsOpen) {
       fill(color(29,113,43));
       rect(0, 50, width, height);
@@ -93,13 +101,30 @@ public class Displays{
       textSize(50);
       text("# of Mines", width/4, height/4+45, 250, 50);
       text("Board Size", width/4, height/4+250, 250, 50);
-      
+    
       for (int i = 0; i < handles.length; i++) {
         handles[i].update();
         handles[i].display();
       }
+    
+      //After it has been used in the sketch, set it back to false
       if (firstMousePress) {
         firstMousePress = false;
+      }
+    }
+  }
+  void pressHandles() {
+    if (settingsOpen) {
+      if (!firstMousePress) {
+        firstMousePress = true;
+      }
+    }
+  }
+  
+  void releaseHandles() {
+    if (settingsOpen) {
+      for (int i = 0; i < handles.length; i++) {
+        handles[i].releaseEvent();
       }
     }
   }
