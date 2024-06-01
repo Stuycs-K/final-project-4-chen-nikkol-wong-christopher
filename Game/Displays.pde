@@ -16,7 +16,7 @@ public class Displays{
     map = new Minefield(this);
     settingsOpen = false;
     inGame = true; 
-    firstMousePress = false;
+    //firstMousePress = false;
     currentSize = 15;
     totalMines = 40;
   }
@@ -87,17 +87,7 @@ public class Displays{
       //slider code
     }
   }
-  public void drawH(){
-    background(color(29,113,43));
-    for (int i = 0; i < handles.length; i++) {
-      handles[i].update();
-      handles[i].display();
-    }
-    if (firstMousePress) {
-      firstMousePress = false;
-    }
-  }
-
+  
   public void setSize(int size) {
     currentSize = size;
     map = new Minefield(this, currentSize, totalMines);
