@@ -25,8 +25,8 @@ void mousePressed(){
     }
     else if (mouseY > 5 && mouseY < 45 && mouseX > 5 && mouseX < 105){
       result.openSettings();
-      mousePressedH();
     }
+    mousePressedH();
   }
   if(mouseButton==RIGHT){
     result.rightClick(mouseX, mouseY);
