@@ -5,7 +5,6 @@
  */
 
 class Handle {
-  boolean firstMousePress;
   int x, y;
   int boxx, boxy;
   int stretch;
@@ -14,27 +13,38 @@ class Handle {
   boolean press;
   boolean locked = false;
   boolean otherslocked = false;
+  Handle[] others;
+  Displays display;
 
-  Handle(int ix, int iy, int il, int is) {
+  Handle(int ix, int iy, int il, int is, Handle[] o, Displays d) {
     x = ix;
     y = iy;
     stretch = il;
     size = is;
     boxx = x+stretch - size/2;
     boxy = y - size/2;
-    firstMousePress = false;
+    others = o;
+    display = d;
   }
 
   void update() {
-    boxx = x+stretch * 3/2;
+    boxx = x+stretch;
     boxy = y - size/2;
+    for (int i=0; i<others.length; i++) {
+      if (others[i].locked == true) {
+        otherslocked = true;
+        break;
+      } else {
+        otherslocked = false;
+      }
+    }
     if (otherslocked == false) {
       overEvent();
       pressEvent();
     }
 
     if (press) {
-      stretch = lock(mouseX-width/2-size/2, 0, width/2-size-1);
+      stretch = lock(mouseX-width/4-size/2, 0, width/2-size-1);
     }
   }
 
@@ -47,10 +57,9 @@ class Handle {
   }
 
   void pressEvent() {
-    if (over || locked) {
+    if (over && display.isFirstMousePress() || locked) {
       press = true;
       locked = true;
-      println("Press!");
     } else {
       press = false;
     }
@@ -61,22 +70,6 @@ class Handle {
   }
 
   void display() {
-    
-    background(color(29,113,43));
-    textAlign(CENTER);
-    fill(color(200,255,200));
-    rect(0, 0, width, 50);
-    rect(5, 5, 100, 40);
-    fill(0);
-    textSize(20);
-    text("Settings", 5, 15, 100, 25);
-    fill(66,193,88);
-    rect(width/4-10,height/4+25,270,70);
-    rect(width/4-10,height/4+230,270,70);
-    fill(0);
-    textSize(50);
-    text("# of Mines", width/4, height/4+45, 250, 50);
-    text("Board Size", width/4, height/4+250, 250, 50);
     line(x, y, x+250, y);
     fill(255);
     stroke(0);

@@ -80,30 +80,46 @@ public class Displays{
       settingsOpen = true;
       inGame = false;
       //slider code
-      handles = new Handle[1];
+      handles = new Handle[2];
       for (int i = 0; i < handles.length; i++) {
-        handles[i] = new Handle(width/4, height/2+(i*200), 0, 10);
+        handles[i] = new Handle(width/4, height/2+(i*200), 0, 10, handles, this);
       }
       //slider code
     }
   }
   public void drawH(){
-    for (int i = 0; i < handles.length; i++) {
-      handles[i].update();
-      handles[i].display();
-    }
-    if (firstMousePress) {
-      firstMousePress = false;
+    if (settingsOpen) {
+      fill(color(29,113,43));
+      rect(0, 50, width, height);
+      fill(66,193,88);
+      rect(width/4-10,height/4+25,270,70);
+      rect(width/4-10,height/4+230,270,70);
+      fill(0);
+      textSize(50);
+      text("# of Mines", width/4, height/4+45, 250, 50);
+      text("Board Size", width/4, height/4+250, 250, 50);
+      
+      for (int i = 0; i < handles.length; i++) {
+        handles[i].update();
+        handles[i].display();
+      }
+      if (firstMousePress) {
+        firstMousePress = false;
+      }
     }
   }
   public void mouseR(){
-    for (int i = 0; i < handles.length; i++) {
-      handles[i].releaseEvent();
-    }    
+    if (settingsOpen) {
+      for (int i = 0; i < handles.length; i++) {
+        handles[i].releaseEvent();
+      }
+    }
   }
   public void mouseP(){
-    if (!firstMousePress) {
-       firstMousePress = true;
+    if (settingsOpen) {
+      if (!firstMousePress) {
+         firstMousePress = true;
+      }
     }
   }
   public void setSize(int size) {
@@ -115,7 +131,7 @@ public class Displays{
     map = new Minefield(this, currentSize, totalMines);
   }
   
-  public boolean isSettingsOpen() {
-    return settingsOpen;
+  public boolean isFirstMousePress() {
+    return firstMousePress;
   }
 }
