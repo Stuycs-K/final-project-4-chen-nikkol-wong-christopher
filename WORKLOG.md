@@ -64,4 +64,8 @@
 - fixed how setting popup is displayed
 - cannot figure out why the slider/handle does not move (experimented around and problem lies with firstMouseClick variable (???))
 
+### 5/31/2024
+- made the sliders/handle move now
+- added increments to the slider handle as well as space to display number of mines and board size selected
+- fixed null pointer exception bug for mouseReleased() with booleans
 
