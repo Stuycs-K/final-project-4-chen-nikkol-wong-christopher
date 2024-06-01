@@ -33,6 +33,9 @@ void mousePressed(){
   }
 }
 
-void mouseReleased() {
-   mouseReleasedH();
+void mouseReleased(){
+  if(result.settingsOpen){
+    mouseReleasedH();
+  }
+   
 }
