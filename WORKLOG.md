@@ -33,6 +33,16 @@
 - Looked into Processing examples to learn how to use Handles (no commits in class because I was reading and testing)
 - Added display bar to top with "button" to open settings
 
+### 5/30/2024
+
+- Wrote setSize() and setNumMines() to use for handles/sliders
+- Added to redraw() and show() to redraw board after closing settings
+
+### 5/31/2024 and 6/1/2024
+
+- Made sliders move correctly
+- Edited displays to make settings menu look better
+- Moved code from main sketch class into Displays class and edited accordingly
 
 ## Nikkol Chen
 
@@ -60,4 +70,8 @@
 - fixed how setting popup is displayed
 - cannot figure out why the slider/handle does not move (experimented around and problem lies with firstMouseClick variable (???))
 
+### 5/31/2024
+- made the sliders/handle move now
+- added increments to the slider handle as well as space to display number of mines and board size selected
+- fixed null pointer exception bug for mouseReleased() with booleans
 

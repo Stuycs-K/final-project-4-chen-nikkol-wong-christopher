@@ -7,6 +7,7 @@ public class Minefield {
   boolean minesPlaced;
   int openedSquares;
   boolean lost;
+  boolean won;
 
 
   public Minefield(Displays d) {
@@ -28,6 +29,7 @@ public class Minefield {
     minesPlaced = false;
     openedSquares = 0;
     lost = false;
+    won = false;
   }
 
   //methods
@@ -46,12 +48,14 @@ public class Minefield {
 
   public void leftClick(int x, int y) {
     y = y - 50;
-    if (!minesPlaced) {
-      placeMines(y/squareSize, x/squareSize);
-    }
-    explore(y/squareSize, x/squareSize);
-    if (openedSquares + totalMines == grid.length * grid.length) {
-      show.win();
+    if (x >= 0 && y >= 0 && x < grid.length * squareSize && y < grid.length * squareSize) {
+      if (!minesPlaced) {
+        placeMines(y/squareSize, x/squareSize);
+      }
+      explore(y/squareSize, x/squareSize);
+      if (openedSquares + totalMines == grid.length * grid.length) {
+        show.win();
+      }
     }
   }
 
@@ -108,17 +112,11 @@ public class Minefield {
     }
     return total;
   }
-  public void shows(){
+  public void redraw(){
+    textSize(37 - grid.length);
     for(int i = 0; i<grid.length; i++){
      for(int j = 0; j<grid[0].length; j++){
-       grid[i][j].reveal();
-       if(grid[i][j].isOpen()){
-         if(grid[i][j].mineHere){
-           continue;
-         }
-         int num = checkNeighs(i,j);
-         grid[i][j].printNeighbors(num);
-       }
+       grid[i][j].redraw();
      }
     }
   }
