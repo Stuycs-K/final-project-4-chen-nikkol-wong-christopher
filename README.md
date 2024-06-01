@@ -3,7 +3,9 @@
 THIS DOCUMENT IS REQUIRED
 ## Group Info
 Period: Period 4
+
 Group Members: Nikkol Chen and Christopher Wong
+
 Group Name: The Stuy 51ers
 ## Overview
 ### Brief Description: 
@@ -25,7 +27,7 @@ Nice-to-Have Features:
 - Reveal remaining/false mines when losing
 
 ## Instructions
-- left click to explore a cell
-- right click to place and un-place a flag
-- click on settings button to open settings; reclick to close
-- press any key to restart
+- Left-click to explore cells
+- Right-click to place or remove flags
+- Click on settings button to open and close settings (settings menu in progress)
+- Press any key to restart and reset board
