@@ -38,6 +38,12 @@
 - Wrote setSize() and setNumMines() to use for handles/sliders
 - Added to redraw() and show() to redraw board after closing settings
 
+### 5/31/2024 and 6/1/2024
+
+- Made sliders move correctly
+- Edited displays to make settings menu look better
+- Moved code from main sketch class into Displays class and edited accordingly
+
 ## Nikkol Chen
 
 ### 5/22/2024
