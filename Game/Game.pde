@@ -3,15 +3,10 @@ Displays result;
 void setup(){
   size(500,550);
   result = new Displays();
-  if(result.settingsOpen){
-    setupH();
-  }
 }
 
 void draw() {
-  if(result.settingsOpen){
-    drawHa();
-  }
+  result.drawHandles();
 }
 
 void keyPressed(){
@@ -26,16 +21,13 @@ void mousePressed(){
     else if (mouseY > 5 && mouseY < 45 && mouseX > 5 && mouseX < 105){
       result.openSettings();
     }
-    mousePressedH();
+    result.pressHandles();
   }
-  if(mouseButton==RIGHT){
+  else if(mouseButton==RIGHT){
     result.rightClick(mouseX, mouseY);
   }
 }
 
 void mouseReleased(){
-  if(result.settingsOpen){
-    mouseReleasedH();
-  }
-   
+  result.releaseHandles();
 }
