@@ -73,6 +73,7 @@ public class Minefield {
             explore(row-1, column+1);
             explore(row-1, column-1);
           } else {
+            textSize(37 - grid.length);
             target.printNeighbors(neighbors);
           }
         } else {

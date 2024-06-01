@@ -2,6 +2,8 @@ public class Displays{
   Minefield map;
   boolean settingsOpen;
   boolean inGame;
+  int currentSize;
+  int totalMines;
   
   public Displays(){
     fill(color(200,255,200));
@@ -13,8 +15,12 @@ public class Displays{
     text("Settings", 5, 15, 100, 25);
     map = new Minefield(this);
     settingsOpen = false;
-    inGame = true;  
+    inGame = true; 
+    firstMousePress = false;
+    currentSize = 15;
+    totalMines = 40;
   }
+  
   public void win(){
     fill(255,255,255);
     rect(width/4,height/4,width/2,height/2);
@@ -36,7 +42,7 @@ public class Displays{
     inGame = false;
   }
   public void restart(){
-    map = new Minefield(this);
+    map = new Minefield(this, currentSize, totalMines);
     inGame = true;
   }
   
@@ -59,6 +65,12 @@ public class Displays{
     if(settingsOpen == true){
       settingsOpen = false;
       show();
+      fill(color(200,255,200));
+      rect(0, 0, width, 50);
+      rect(5, 5, 100, 40);
+      fill(0);
+      textSize(20);
+      text("Settings", 5, 15, 100, 25);
       if(map.lost){
         lose();
       }else{
@@ -66,18 +78,32 @@ public class Displays{
       }
     }else{
       settingsOpen = true;
-      fill(255,255,255);
-      rect(width/4,height/4,width/2,height/2);
       fill(0,0,0);
       textSize(25);
       text("Settings", width/2, height/2-85);
-      //textSize(15);
-      //text("Press Any Key to Restart", width/2, height/2+50);
       inGame = false;
+      //slider code
+      setupH();
+      //slider code
     }
   }
-  public void setSize() {
+  public void drawH(){
+    background(color(29,113,43));
+    for (int i = 0; i < handles.length; i++) {
+      handles[i].update();
+      handles[i].display();
+    }
+    if (firstMousePress) {
+      firstMousePress = false;
+    }
   }
-  public void setNumMines() {
+
+  public void setSize(int size) {
+    currentSize = size;
+    map = new Minefield(this, currentSize, totalMines);
+  }
+  public void setNumMines(int mines) {
+    totalMines = mines;
+    map = new Minefield(this, currentSize, totalMines);
   }
 }

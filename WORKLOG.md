@@ -51,3 +51,13 @@
 - Wrote restart() and accessed it through keyPressed()
 - worked on openSetting() and the mechanisms involved with opening it during gameplay, after losing, and closing the settings tab
 
+### 5/29/2024
+- examined the code at the Handles example under GUI for settings
+- initial implementation of Handles into Displays --> settings
+
+### 5/30/2024
+- added to README
+- fixed how setting popup is displayed
+- cannot figure out why the slider/handle does not move (experimented around and problem lies with firstMouseClick variable (???))
+
+
