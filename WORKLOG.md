@@ -59,3 +59,9 @@
 - examined the code at the Handles example under GUI for settings
 - initial implementation of Handles into Displays --> settings
 
+### 5/30/2024
+- added to README
+- fixed how setting popup is displayed
+- cannot figure out why the slider/handle does not move (experimented around and problem lies with firstMouseClick variable (???))
+
+
