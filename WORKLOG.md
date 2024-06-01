@@ -60,4 +60,7 @@
 - fixed how setting popup is displayed
 - cannot figure out why the slider/handle does not move (experimented around and problem lies with firstMouseClick variable (???))
 
+### 5/31/2024
+- made the sliders/handle move now
+
 
