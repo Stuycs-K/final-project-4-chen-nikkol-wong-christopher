@@ -62,5 +62,6 @@
 
 ### 5/31/2024
 - made the sliders/handle move now
+- added increments to the slider handle as well as space to display number of mines and board size selected
 
 
