@@ -20,7 +20,6 @@ public class Displays{
     map = new Minefield(this);
     settingsOpen = false;
     inGame = true; 
-
     currentSize = 15;
     totalMines = 40;
   }
