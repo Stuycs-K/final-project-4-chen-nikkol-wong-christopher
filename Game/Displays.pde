@@ -2,8 +2,6 @@ public class Displays{
   Minefield map;
   boolean settingsOpen;
   boolean inGame;
-  Handle[] handles;
-  boolean firstMousePress;
   int currentSize;
   int totalMines;
   
@@ -22,9 +20,7 @@ public class Displays{
     currentSize = 15;
     totalMines = 40;
   }
-  public void changeFirst(){
-    firstMousePress = !firstMousePress;
-  }
+  
   public void win(){
     fill(255,255,255);
     rect(width/4,height/4,width/2,height/2);
@@ -87,13 +83,7 @@ public class Displays{
       text("Settings", width/2, height/2-85);
       inGame = false;
       //slider code
-      handles = new Handle[2];
-      for (int i = 0; i < handles.length; i++) {
-        handles[i] = new Handle(width/4, height/2+(i*200), 5, 10, handles);
-      }
-      drawH();
-      mouseR();
-      mouseP();
+      setupH();
       //slider code
     }
   }
@@ -107,16 +97,7 @@ public class Displays{
       firstMousePress = false;
     }
   }
-  public void mouseR(){
-    for (int i = 0; i < result.handles.length; i++) {
-      result.handles[i].releaseEvent();
-    }    
-  }
-  public void mouseP(){
-    if (!result.firstMousePress) {
-        result.changeFirst();
-    }
-  }
+
   public void setSize(int size) {
     currentSize = size;
     map = new Minefield(this, currentSize, totalMines);

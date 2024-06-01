@@ -4,30 +4,28 @@
  * Click and drag the white boxes to change their position.
  */
 
-
-
+Handle[] handles;
 
 //True if a mouse button has just been pressed while no other button was.
+boolean firstMousePress = false;
 
-/*
 void setupH() {
-  size(640, 360);
   handles = new Handle[2];
-  for (int i = 0; i < handles.length; i++) {
-    handles[i] = new Handle(width/3, height/3+(i*70), 5, 10, handles);
-  }
+      for (int i = 0; i < handles.length; i++) {
+        handles[i] = new Handle(width/4, height/2+(i*200), 0, 10, handles);
+      }
 }
 
-void drawH() {
-  background(153);
+void drawHa() {
+  background(color(29,113,43));
 
   for (int i = 0; i < handles.length; i++) {
     handles[i].update();
     handles[i].display();
   }
 
-  //fill(0);
-  //rect(0, 0, width/2, height);
+ // fill(0);
+ // rect(0, 0, width/2, height);
 
   //After it has been used in the sketch, set it back to false
   if (firstMousePress) {
@@ -37,7 +35,6 @@ void drawH() {
 
 
 void mousePressedH() {
-  
   if (!firstMousePress) {
     firstMousePress = true;
   }
@@ -48,9 +45,9 @@ void mouseReleasedH() {
     handles[i].releaseEvent();
   }
 }
-*/
+
 class Handle {
-  boolean firstMousePress;
+
   int x, y;
   int boxx, boxy;
   int stretch;
@@ -59,7 +56,7 @@ class Handle {
   boolean press;
   boolean locked = false;
   boolean otherslocked = false;
-  Handle[] others; // array of handles
+  Handle[] others;
 
   Handle(int ix, int iy, int il, int is, Handle[] o) {
     x = ix;
@@ -69,7 +66,6 @@ class Handle {
     boxx = x+stretch - size/2;
     boxy = y - size/2;
     others = o;
-    firstMousePress = false;
   }
 
   void update() {
@@ -91,7 +87,7 @@ class Handle {
     }
 
     if (press) {
-      stretch = lock(mouseX-width/4-size/2, 0, 240);
+      stretch = lock(mouseX-width/4-size/2, 0, width/2-size-1);
     }
   }
 
@@ -140,16 +136,17 @@ class Handle {
       line(boxx, boxy+size, boxx+size, boxy);
     }
   }
-  boolean overRect(int x, int y, int width, int height) {
-    if (mouseX >= x && mouseX <= x+width &&
-      mouseY >= y && mouseY <= y+height) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+}
 
-  int lock(int val, int minv, int maxv) {
-    return  min(max(val, minv), maxv);
+boolean overRect(int x, int y, int width, int height) {
+  if (mouseX >= x && mouseX <= x+width &&
+    mouseY >= y && mouseY <= y+height) {
+    return true;
+  } else {
+    return false;
   }
+}
+
+int lock(int val, int minv, int maxv) {
+  return  min(max(val, minv), maxv);
 }
