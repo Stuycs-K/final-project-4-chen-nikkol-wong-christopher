@@ -71,6 +71,9 @@ public class Displays{
       fill(0);
       textSize(20);
       text("Settings", 5, 15, 100, 25);
+      
+      
+      
       if(map.lost){
         lose();
       }else{
