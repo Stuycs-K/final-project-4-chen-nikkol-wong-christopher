@@ -47,7 +47,8 @@ void mouseReleasedH() {
 }
 
 class Handle {
-
+  int boardS;
+  int mineN;
   int x, y;
   int boxx, boxy;
   int stretch;
@@ -89,6 +90,8 @@ class Handle {
     if (press) {
       stretch = lock(mouseX-width/4-size/2, 0, width/2-size-1);
     }
+    boardS = returnB();
+    mineN = returnM();
   }
 
   void overEvent() {
@@ -112,7 +115,34 @@ class Handle {
     locked = false;
   }
   
-
+  int returnM(){
+    if(boxx >= x && boxx < x+ 50){
+      return 30;
+    } else if(boxx >= x+50 && boxx < x+100){
+      return 35;
+    } else if(boxx >= x+100 && boxx < x+150){
+      return 40;
+    } else if(boxx >= x+ 150 && boxx < x+ 200){
+      return 45;
+    }else{
+      return 50;
+    }
+  }
+  
+  int returnB(){
+    if(boxx >= x && boxx < x+ 50){
+      return 9;
+    } else if(boxx >= x+50 && boxx < x+100){
+      return 12;
+    } else if(boxx >= x+100 && boxx < x+150){
+      return 15;
+    } else if(boxx >= x+ 150 && boxx < x+ 200){
+      return 18;
+    }else{
+      return 21;
+    }
+  }
+  
   void display() {
     fill(color(200,255,200));
     rect(0, 0, width, 50);
@@ -127,9 +157,15 @@ class Handle {
     textSize(50);
     text("# of Mines", width/4, height/4+45, 250, 50);
     text("Board Size", width/4, height/4+250, 250, 50);
-    
     fill(255);
     rect(x+270, y-100, 50,50);
+    fill(0);
+    textSize(25);
+    if(y>width/2+30){
+      text(boardS + "", x+290, y-70);
+    }else{
+      text(mineN + "", x+290, y-70);
+    }
     
     
     line(x + 0, y-5, x, y+5);
