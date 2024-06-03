@@ -29,7 +29,7 @@ public class Displays{
     textSize(25);
     text("You Won!!!", width/2, height/2-10);
     textSize(15);
-    text("Press Space Key to Restart", width/2, height/2+50);
+    text("Left-Click or Press Space Key to Restart", width/2, height/2+50);
     inGame = false;
   }
   public void lose(){
@@ -39,7 +39,7 @@ public class Displays{
     textSize(25);
     text("You Clicked On A Mine", width/2, height/2-10);
     textSize(15);
-    text("Press Space Key to Restart", width/2, height/2+50);
+    text("Left-Click or Press Space Key to Restart", width/2, height/2+50);
     inGame = false;
   }
   
@@ -65,6 +65,9 @@ public class Displays{
       if (inGame) {
         map.leftClick(x, y);
       }
+      else if (map.getWin() || map.getLose()) {
+        restart();
+      }
     }
   }
   
@@ -72,10 +75,10 @@ public class Displays{
     if(settingsOpen == true){
       settingsOpen = false;
       map.redraw();
-      if(map.lost){
+      if(map.getLose()){
         lose();
       }
-      else if (map.won) {
+      else if (map.getWin()) {
         win();
       }
       else{
