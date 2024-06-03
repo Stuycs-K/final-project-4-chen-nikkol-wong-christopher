@@ -5,7 +5,7 @@ public class Cell {
   int squareSize;
   int xcoord;
   int ycoord;
-  int numNeighbors;
+  int minesSurrounding;
   
   public Cell(int size, int x, int y){
     flag = false;
@@ -14,7 +14,7 @@ public class Cell {
     squareSize = size;
     xcoord = x;
     ycoord = y;
-    numNeighbors = 0;
+    minesSurrounding = 0;
     rect(xcoord, ycoord, squareSize, squareSize);
   }
   
@@ -48,8 +48,7 @@ public class Cell {
   }
   
   public void printNeighbors(int num) {
-    numNeighbors = num;
-    textAlign(CENTER);
+    minesSurrounding = num;
     if (num == 1) {
       fill(0, 0, 200);
     }
@@ -101,7 +100,7 @@ public class Cell {
       else {
         fill(245, 222, 159);
         rect(xcoord, ycoord, squareSize, squareSize);
-        printNeighbors(numNeighbors);
+        printNeighbors(minesSurrounding);
       }
     }
     else {

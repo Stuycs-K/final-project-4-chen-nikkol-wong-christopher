@@ -4,12 +4,10 @@ public class Displays{
   boolean inGame;
   int currentSize;
   int totalMines;
-  
   Handle[] handles;
   boolean firstMousePress;
   
   public Displays(){
-    background(color(29,113,43));
     fill(color(200,255,200));
     rect(0, 0, width, 50);
     rect(5, 5, 100, 40);
@@ -31,7 +29,7 @@ public class Displays{
     textSize(25);
     text("You Won!!!", width/2, height/2-10);
     textSize(15);
-    text("Press Any Key to Restart", width/2, height/2+50);
+    text("Press Space Key to Restart", width/2, height/2+50);
     inGame = false;
   }
   public void lose(){
@@ -41,12 +39,15 @@ public class Displays{
     textSize(25);
     text("You Clicked On A Mine", width/2, height/2-10);
     textSize(15);
-    text("Press Any Key to Restart", width/2, height/2+50);
+    text("Press Space Key to Restart", width/2, height/2+50);
     inGame = false;
   }
+  
   public void restart(){
-    map = new Minefield(this, currentSize, totalMines);
-    inGame = true;
+    if (!settingsOpen) {
+      map = new Minefield(this, currentSize, totalMines);
+      inGame = true;
+    }
   }
   
   public void rightClick(int x, int y) {
@@ -56,18 +57,21 @@ public class Displays{
   }
   
   public void leftClick(int x, int y) {
-    if (inGame) {
-      map.leftClick(x, y);
+    pressHandles();
+    if (y > 5 && y < 45 && x > 5 && x < 105) {
+      openSettings();
+    }
+    else if (y > 50) {
+      if (inGame) {
+        map.leftClick(x, y);
+      }
     }
   }
   
-  public void show(){
-    map.redraw();
-  }
   public void openSettings(){
     if(settingsOpen == true){
       settingsOpen = false;
-      show();
+      map.redraw();
       if(map.lost){
         lose();
       }
