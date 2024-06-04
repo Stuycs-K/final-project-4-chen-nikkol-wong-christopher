@@ -8,6 +8,8 @@ public class Displays{
   int totalMines;
   
   public Displays(){
+    fill(color(29,113,43));
+    rect(0, 50, width, height);
     fill(color(200,255,200));
     rect(0, 0, width, 50);
     rect(5, 5, 100, 40);
@@ -23,7 +25,7 @@ public class Displays{
     firstMousePress = false;
     handles = new Handle[2];
     for (int i = 0; i < handles.length; i++) {
-      handles[i] = new Handle(width/4, height/2+(i*200), 0, 10, handles, this);
+      handles[i] = new Handle(width/4, height/2+(i*200) - 50, 0, 10, handles, this);
     }
   }
 
@@ -71,6 +73,11 @@ public class Displays{
       if (inGame) {
         map.leftClick(x, y);
       }
+      else if (settingsOpen) {
+        if (x > width/2 - 100 && x < width/2 + 100 && y > 455 && y < 525) {
+          apply(handles[1].getSize(), handles[0].getMines());
+        }
+      }
       else {
         restart();
       }
@@ -102,12 +109,14 @@ public class Displays{
       fill(color(29,113,43));
       rect(0, 50, width, height);
       fill(66,193,88);
-      rect(width/4-10,height/4+25,270,70);
-      rect(width/4-10,height/4+230,270,70);
+      rect(width/4-10,height/4-25,270,70);
+      rect(width/4-10,height/4+180,270,70);
+      rect(width/2 - 100, 455, 200, 70);
       fill(0);
       textSize(50);
-      text("# of Mines", width/4, height/4+45, 250, 50);
-      text("Board Size", width/4, height/4+250, 250, 50);
+      text("# of Mines", width/4, height/4-5, 250, 50);
+      text("Board Size", width/4, height/4+200, 250, 50);
+      text("Apply", width/4, 470, 250, 50);
     
       for (int i = 0; i < handles.length; i++) {
         handles[i].update();
@@ -140,12 +149,10 @@ public class Displays{
     return firstMousePress;
   }
   
-  public void setSize(int size) {
+  public void apply(int size, int mines) {
     currentSize = size;
-    map = new Minefield(this, currentSize, totalMines);
-  }
-  public void setNumMines(int mines) {
     totalMines = mines;
     map = new Minefield(this, currentSize, totalMines);
+    openSettings();
   }
 }
