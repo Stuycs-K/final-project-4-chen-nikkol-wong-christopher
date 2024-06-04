@@ -28,8 +28,8 @@ public class Cell {
     else {
       fill(245, 222, 159);
       rect(xcoord, ycoord, squareSize, squareSize);
+      return false;
     }
-    return false;
   }
 
   public void toggleFlag(){

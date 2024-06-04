@@ -17,7 +17,7 @@ public class Minefield {
     show = d;
     fill(60, 201, 91);
     grid = new Cell[size][size];
-    squareSize = width/grid.length;
+    squareSize = width/size;
     for (int row = 0; row < grid.length; row++) {
       for (int col = 0; col < grid.length; col++) {
         grid[row][col] = new Cell(squareSize, col * squareSize, row * squareSize + 50);
@@ -63,9 +63,9 @@ public class Minefield {
     if (row < grid.length && column < grid.length && row >= 0 && column >= 0) {
       Cell target = grid[row][column];
       if (!target.isOpen() && !target.hasFlag()) {
-        int neighbors = checkNeighs(row, column);
         boolean mined = target.excavate();
         if (!mined) {
+          int neighbors = checkNeighs(row, column);
           openedSquares++;
           if (neighbors == 0) {
             explore(row, column + 1);
