@@ -24,7 +24,7 @@ class Handle {
   }
 
   void update() {
-    boxx = x+stretch;
+    boxx = x + stretch;
     boxy = y - size/2;
     for (int i=0; i<others.length; i++) {
       if (others[i].locked == true) {
@@ -91,12 +91,12 @@ class Handle {
     
     if (this == others[0]) {
       for (int i = 0; i <= 4; i++) {
-        line(x + width/8.0 * i, y - 5, x + width/8.0 * i, y + 5);
+        line(width/8.0 * i + width/4.0, y - 5, width/8.0 * i + width/4.0, y + 5);
       }
     }
     else {
       for (int i = 0; i <= 10; i++) {
-        line(x + width/20.0 * i, y-5, x + width/20.0 * i, y+5);
+        line(width/4.0 + width/20.0 * i, y-5, width/4.0 + width/20.0 * i, y+5);
       }
     }
     
