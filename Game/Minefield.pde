@@ -120,4 +120,11 @@ public class Minefield {
      }
     }
   }
+  
+  public boolean getWin() {
+    return won;
+  }
+  public boolean getLose() {
+    return lost;
+  }
 }
