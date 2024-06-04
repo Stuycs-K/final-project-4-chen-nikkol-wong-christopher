@@ -24,7 +24,7 @@ class Handle {
   }
 
   void update() {
-    boxx = x+stretch;
+    boxx = x + stretch;
     boxy = y - size/2;
     for (int i=0; i<others.length; i++) {
       if (others[i].locked == true) {
@@ -40,10 +40,10 @@ class Handle {
     }
 
     if (press) {
-      stretch = lock(mouseX-width/4-size/2, 0, width/2-size-1);
+      stretch = lock(mouseX-width/4-size/2, 0, width/2-size);
     }
-    boardS = returnB();
-    mineN = returnM();
+    boardS = getSize();
+    mineN = getMines();
   }
 
   void overEvent() {
@@ -67,53 +67,17 @@ class Handle {
     locked = false;
   }
   
-  int returnM(){
-    if(boxx >= x && boxx < x+ 50){
-      return 30;
-    } else if(boxx >= x+50 && boxx < x+100){
-      return 35;
-    } else if(boxx >= x+100 && boxx < x+150){
-      return 40;
-    } else if(boxx >= x+ 150 && boxx < x+ 200){
-      return 45;
-    }else{
-      return 50;
-    }
+  int getMines(){
+    return ((stretch + size/2)/60) * 5  + 30;
   }
   
-  int returnB(){
-    if(boxx >= x && boxx < x+ 50){
-      return 9;
-    } else if(boxx >= x+50 && boxx < x+100){
-      return 12;
-    } else if(boxx >= x+100 && boxx < x+150){
-      return 15;
-    } else if(boxx >= x+ 150 && boxx < x+ 200){
-      return 18;
-    }else{
-      return 21;
-    }
+  int getSize(){
+    return (stretch + size/2)/24 + 10;
   }
   
   void display() {
 
     
-    fill(255);
-    rect(x+270, y-100, 50,50);
-
-    fill(color(200,255,200));
-    rect(0, 0, width, 50);
-    rect(5, 5, 100, 40);
-    fill(0);
-    textSize(20);
-    text("Settings", 5, 15, 100, 25);
-    fill(66,193,88);
-    rect(width/4-10,height/4+25,270,70);
-    rect(width/4-10,height/4+230,270,70);
-    fill(0);
-    textSize(50);
-    text("# of Mines", width/4, height/4+45, 250, 50);
-    text("Board Size", width/4, height/4+250, 250, 50);
     fill(255);
     rect(x+270, y-100, 50,50);
     fill(0);
@@ -125,14 +89,16 @@ class Handle {
       text(mineN + "", x+290, y-70);
     }
     
-    
-
-    line(x + 0, y-5, x, y+5);
-    line(x + 50, y-5, x+50, y+5);
-    line(x + 100, y-5, x+100, y+5);
-    line(x + 150, y-5, x+150, y+5);
-    line(x + 200, y-5, x+200, y+5);
-    line(x + 250, y-5, x+250, y+5);
+    if (this == others[0]) {
+      for (int i = 0; i <= 4; i++) {
+        line(width/8.0 * i + width/4.0, y - 5, width/8.0 * i + width/4.0, y + 5);
+      }
+    }
+    else {
+      for (int i = 0; i <= 10; i++) {
+        line(width/4.0 + width/20.0 * i, y-5, width/4.0 + width/20.0 * i, y+5);
+      }
+    }
     
     line(x, y, x+250, y);
     fill(255);
