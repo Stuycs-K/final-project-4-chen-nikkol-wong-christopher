@@ -88,7 +88,6 @@ public class Minefield {
     }
   }
 
-
   public void rightClick(int x, int y) {
     if (minesPlaced) {
       y = y - 50;
@@ -112,6 +111,7 @@ public class Minefield {
     }
     return total;
   }
+  
   public void redraw(){
     textSize(37 - grid.length);
     for(int i = 0; i<grid.length; i++){

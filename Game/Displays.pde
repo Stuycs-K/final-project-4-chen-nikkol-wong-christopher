@@ -20,6 +20,11 @@ public class Displays{
     inGame = true; 
     currentSize = 15;
     totalMines = 40;
+    firstMousePress = false;
+    handles = new Handle[2];
+    for (int i = 0; i < handles.length; i++) {
+      handles[i] = new Handle(width/4, height/2+(i*200), 0, 10, handles, this);
+    }
   }
 
   public void lose(){
@@ -89,10 +94,6 @@ public class Displays{
       settingsOpen = true;
       inGame = false;
       firstMousePress = false;
-      handles = new Handle[2];
-      for (int i = 0; i < handles.length; i++) {
-        handles[i] = new Handle(width/4, height/2+(i*200), 0, 10, handles, this);
-      }
     }
   }
   
