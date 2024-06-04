@@ -1,18 +1,18 @@
 public class Minefield {
   Cell[][] grid;
-  Displays show;
-  int foundFlags;
   int totalMines;
   int squareSize;
   boolean minesPlaced;
   int openedSquares;
   boolean lost;
   boolean won;
-
+  Displays show;
+  int foundFlags;
 
   public Minefield(Displays d) {
     this(d, 15, 40);
   }
+  
   public Minefield(Displays d, int size, int mines) {
     show = d;
     fill(60, 201, 91);

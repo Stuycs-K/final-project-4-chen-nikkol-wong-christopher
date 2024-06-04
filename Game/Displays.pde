@@ -1,12 +1,11 @@
 public class Displays{
   Minefield map;
-  boolean settingsOpen;
   boolean inGame;
-  int currentSize;
-  int totalMines;
-  
+  boolean settingsOpen;
   Handle[] handles;
   boolean firstMousePress;
+  int currentSize;
+  int totalMines;
   
   public Displays(){
     background(color(29,113,43));
@@ -20,9 +19,31 @@ public class Displays{
     map = new Minefield(this);
     settingsOpen = false;
     inGame = true; 
-
     currentSize = 15;
     totalMines = 40;
+  }
+  
+  public void leftClick(int x, int y) {
+    if (inGame) {
+      map.leftClick(x, y);
+    }
+  }
+  
+  public void rightClick(int x, int y) {
+    if (inGame) {
+      map.rightClick(x, y);
+    }
+  }
+
+  public void lose(){
+    fill(255,255,255);
+    rect(width/4,height/4,width/2,height/2);
+    fill(0,0,0);
+    textSize(25);
+    text("You Clicked On A Mine", width/2, height/2-10);
+    textSize(15);
+    text("Press Any Key to Restart", width/2, height/2+50);
+    inGame = false;
   }
 
   public void win(){
@@ -35,40 +56,16 @@ public class Displays{
     text("Press Any Key to Restart", width/2, height/2+50);
     inGame = false;
   }
-  public void lose(){
-    fill(255,255,255);
-    rect(width/4,height/4,width/2,height/2);
-    fill(0,0,0);
-    textSize(25);
-    text("You Clicked On A Mine", width/2, height/2-10);
-    textSize(15);
-    text("Press Any Key to Restart", width/2, height/2+50);
-    inGame = false;
-  }
+  
   public void restart(){
     map = new Minefield(this, currentSize, totalMines);
     inGame = true;
   }
   
-  public void rightClick(int x, int y) {
-    if (inGame) {
-      map.rightClick(x, y);
-    }
-  }
-  
-  public void leftClick(int x, int y) {
-    if (inGame) {
-      map.leftClick(x, y);
-    }
-  }
-  
-  public void show(){
-    map.redraw();
-  }
   public void openSettings(){
     if(settingsOpen == true){
       settingsOpen = false;
-      show();
+      map.redraw();
       if(map.lost){
         lose();
       }
@@ -79,10 +76,9 @@ public class Displays{
         inGame = true;
       }
     }else{
-      firstMousePress = false;
       settingsOpen = true;
       inGame = false;
-
+      firstMousePress = false;
       handles = new Handle[2];
       for (int i = 0; i < handles.length; i++) {
         handles[i] = new Handle(width/4, height/2+(i*200), 0, 10, handles, this);
@@ -129,6 +125,10 @@ public class Displays{
     }
   }
   
+  public boolean isFirstMousePress() {
+    return firstMousePress;
+  }
+  
   public void setSize(int size) {
     currentSize = size;
     map = new Minefield(this, currentSize, totalMines);
@@ -136,9 +136,5 @@ public class Displays{
   public void setNumMines(int mines) {
     totalMines = mines;
     map = new Minefield(this, currentSize, totalMines);
-  }
-  
-  public boolean isFirstMousePress() {
-    return firstMousePress;
   }
 }
