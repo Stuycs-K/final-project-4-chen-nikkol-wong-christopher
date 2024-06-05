@@ -65,3 +65,6 @@
 - added increments to the slider handle as well as space to display number of mines and board size selected
 - fixed null pointer exception bug for mouseReleased() with booleans
 
+### 6/3/2024
+- displayed the selections on the settings
+
