@@ -23,7 +23,6 @@ public class Minefield {
         grid[row][col] = new Cell(squareSize, col * squareSize, row * squareSize + 50);
       }
     }
-    
     foundFlags = 0;
     totalMines = mines;
     minesPlaced = false;

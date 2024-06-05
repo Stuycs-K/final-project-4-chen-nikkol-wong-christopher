@@ -13,15 +13,17 @@ public class Displays{
     fill(color(200,255,200));
     rect(0, 0, width, 50);
     rect(5, 5, 100, 40);
+    rect(200, 5, 250, 40);
     fill(0);
     textSize(20);
     textAlign(CENTER);
     text("Settings", 5, 15, 100, 25);
+    totalMines = 40; //make accessor to acces minefield total mines varibale
+    text("Unflagged mines: " + totalMines, 290, 30);
     map = new Minefield(this);
     settingsOpen = false;
     inGame = true; 
     currentSize = 15;
-    totalMines = 40;
     firstMousePress = false;
     handles = new Handle[2];
     for (int i = 0; i < handles.length; i++) {
