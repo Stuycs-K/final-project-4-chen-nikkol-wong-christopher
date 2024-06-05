@@ -21,8 +21,13 @@ public class Cell {
   public boolean excavate(){
     opened = true;
     if (mineHere) {
-      fill(0, 0, 255);
+      int red = (int)(Math.random() * 205) + 50;
+      int green = (int)(Math.random() * 205) + 50;
+      int blue = (int)(Math.random() * 205) + 50;
+      fill(red, green, blue);
       rect(xcoord, ycoord, squareSize, squareSize);
+      fill(red - 50, green - 50, blue - 50);
+      circle(xcoord + squareSize/2, ycoord + squareSize/2, squareSize * 3/4);
       return true;
     }
     else {
