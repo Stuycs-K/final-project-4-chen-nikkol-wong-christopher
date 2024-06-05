@@ -132,8 +132,12 @@ public class Minefield {
   public void revealMines() {
     for (int row = 0; row < grid.length; row++) {
       for (int col = 0; col < grid.length; col++) {
-        if (grid[row][col].getMine() && !grid[row][col].hasFlag()) {
-          grid[row][col].excavate();
+        Cell target = grid[row][col];
+        if (target.getMine() && !target.hasFlag()) {
+          target.excavate();
+        }
+        else if (!target.getMine() && target.hasFlag()) {
+          target.misplace();
         }
       }
     }

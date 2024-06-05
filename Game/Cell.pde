@@ -6,27 +6,31 @@ public class Cell {
   int xcoord;
   int ycoord;
   int minesSurrounding;
+  color mine;
+  boolean incorrect;
   
   public Cell(int size, int x, int y){
     flag = false;
     opened = false;
     mineHere = false;
+    incorrect = false;
     squareSize = size;
     xcoord = x;
     ycoord = y;
     minesSurrounding = 0;
     rect(xcoord, ycoord, squareSize, squareSize);
+    int red = (int)(Math.random() * 205) + 50;
+    int green = (int)(Math.random() * 205) + 50;
+    int blue = (int)(Math.random() * 205) + 50;
+    mine = color(red, green, blue);
   }
   
   public boolean excavate(){
     opened = true;
     if (mineHere) {
-      int red = (int)(Math.random() * 205) + 50;
-      int green = (int)(Math.random() * 205) + 50;
-      int blue = (int)(Math.random() * 205) + 50;
-      fill(red, green, blue);
+      fill(mine);
       rect(xcoord, ycoord, squareSize, squareSize);
-      fill(red - 50, green - 50, blue - 50);
+      fill(red(mine) - 50, green(mine) - 50, blue(mine) - 50);
       circle(xcoord + squareSize/2, ycoord + squareSize/2, squareSize * 3/4);
       return true;
     }
@@ -99,8 +103,10 @@ public class Cell {
   public void redraw(){
     if(opened){
       if (mineHere) {
-        fill(0, 0, 255);
+        fill(mine);
         rect(xcoord, ycoord, squareSize, squareSize);
+        fill(red(mine) - 50, green(mine) - 50, blue(mine) - 50);
+        circle(xcoord + squareSize/2, ycoord + squareSize/2, squareSize * 3/4);
       }
       else {
         fill(245, 222, 159);
@@ -112,9 +118,24 @@ public class Cell {
       fill(60, 201, 91);
       rect(xcoord, ycoord, squareSize, squareSize);
     }
-    if (flag) {
+    if (incorrect) {
+      misplace();
+    }
+    else if (flag) {
       fill(255, 0, 0);
       circle(xcoord + squareSize/2.0, ycoord + squareSize/2.0, squareSize);
     }
+  }
+  
+  public void misplace() {
+    fill(60, 201, 91);
+    rect(xcoord, ycoord, squareSize, squareSize);
+    stroke(255, 0, 0);
+    strokeWeight(3);
+    line(xcoord + 3, ycoord + 3, xcoord + squareSize - 3, ycoord + squareSize - 3);
+    line(xcoord + squareSize - 3, ycoord + 3, xcoord + 3, ycoord + squareSize - 3);
+    strokeWeight(1);
+    stroke(0);
+    incorrect = true;
   }
 }
