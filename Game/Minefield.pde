@@ -81,8 +81,9 @@ public class Minefield {
             target.printNeighbors(neighbors);
           }
         } else {
-          show.lose();
           lost = true;
+          revealMines();
+          show.lose();
         }
       }
     }
@@ -126,5 +127,15 @@ public class Minefield {
   }
   public boolean getLose() {
     return lost;
+  }
+  
+  public void revealMines() {
+    for (int row = 0; row < grid.length; row++) {
+      for (int col = 0; col < grid.length; col++) {
+        if (grid[row][col].getMine()) {
+          grid[row][col].excavate();
+        }
+      }
+    }
   }
 }
