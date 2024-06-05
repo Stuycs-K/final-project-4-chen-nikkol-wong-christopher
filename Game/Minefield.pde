@@ -132,7 +132,7 @@ public class Minefield {
   public void revealMines() {
     for (int row = 0; row < grid.length; row++) {
       for (int col = 0; col < grid.length; col++) {
-        if (grid[row][col].getMine()) {
+        if (grid[row][col].getMine() && !grid[row][col].hasFlag()) {
           grid[row][col].excavate();
         }
       }
