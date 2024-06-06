@@ -49,8 +49,14 @@ public class Cell {
         flag = false;
       }
       else {
-        fill(255, 0, 0);
-        circle(xcoord + squareSize/2.0, ycoord + squareSize/2.0, squareSize);
+        fill(255, 0, 0);       
+        strokeWeight(3);
+        stroke(255, 0, 0);
+        line(xcoord + 9, ycoord + 5, xcoord + 9, ycoord + squareSize - 5);
+        line(xcoord + 6, ycoord + squareSize - 5, xcoord + 12, ycoord + squareSize - 5);
+        strokeWeight(1);
+        triangle(xcoord + 9, ycoord + 3, xcoord + squareSize - 5, ycoord + 2*squareSize/7 + 3, xcoord + 9, ycoord + 4*squareSize/7 + 3);
+        stroke(0);
         flag = true;
       }
     }
@@ -122,8 +128,14 @@ public class Cell {
       misplace();
     }
     else if (flag) {
-      fill(255, 0, 0);
-      circle(xcoord + squareSize/2.0, ycoord + squareSize/2.0, squareSize);
+      fill(255, 0, 0);       
+      strokeWeight(3);
+      stroke(255, 0, 0);
+      line(xcoord + 9, ycoord + 5, xcoord + 9, ycoord + squareSize - 5);
+      line(xcoord + 6, ycoord + squareSize - 5, xcoord + 12, ycoord + squareSize - 5);
+      strokeWeight(1);
+      triangle(xcoord + 9, ycoord + 3, xcoord + squareSize - 2, ycoord + 2*squareSize/7 + 3, xcoord + 9, ycoord + 4*squareSize/7 + 3);
+      stroke(0);
     }
   }
   
