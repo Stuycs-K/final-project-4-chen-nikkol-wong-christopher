@@ -44,6 +44,18 @@
 - Edited displays to make settings menu look better
 - Moved code from main sketch class into Displays class and edited accordingly
 
+### 6/3/2024
+
+- Added clicking after winning or losing to restart
+- Improved handle accessing
+- Added apply "button" and apply() method to apply handle settings
+- Minor fixes to improve code
+
+### 6/5/2024
+
+- Added revealMines() to reveal mines after losing and Xs for wrongly placed flags
+- Redrew flags and mines
+
 ## Nikkol Chen
 
 ### 5/22/2024
