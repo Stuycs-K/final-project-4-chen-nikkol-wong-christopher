@@ -8,8 +8,9 @@ public class Cell {
   int minesSurrounding;
   color mine;
   boolean incorrect;
+  Displays display;
   
-  public Cell(int size, int x, int y){
+  public Cell(int size, int x, int y, Displays d){
     flag = false;
     opened = false;
     mineHere = false;
@@ -23,6 +24,7 @@ public class Cell {
     int green = (int)(Math.random() * 205) + 50;
     int blue = (int)(Math.random() * 205) + 50;
     mine = color(red, green, blue);
+    display = d;
   }
   
   public boolean excavate(){
@@ -47,6 +49,7 @@ public class Cell {
         fill(60, 201, 91);
         rect(xcoord, ycoord, squareSize, squareSize);
         flag = false;
+        display.increaseCounter();
       }
       else {
         fill(255, 0, 0);       
@@ -58,9 +61,7 @@ public class Cell {
         triangle(xcoord + 9, ycoord + 3, xcoord + squareSize - 5, ycoord + 2*squareSize/7 + 3, xcoord + 9, ycoord + 4*squareSize/7 + 3);
         stroke(0);
         flag = true;
-        if(mineHere){
-         // updateFlagCount(-1);
-        }
+        display.decreaseCounter();
 
       }
     }

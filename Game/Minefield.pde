@@ -20,7 +20,7 @@ public class Minefield {
     squareSize = width/size;
     for (int row = 0; row < grid.length; row++) {
       for (int col = 0; col < grid.length; col++) {
-        grid[row][col] = new Cell(squareSize, col * squareSize, row * squareSize + 50);
+        grid[row][col] = new Cell(squareSize, col * squareSize, row * squareSize + 50, show);
       }
     }
     foundFlags = 0;
@@ -96,12 +96,6 @@ public class Minefield {
       y = y - 50;
       if (x >= 0 && y >= 0 && x < grid.length * squareSize && y < grid.length * squareSize) {
         grid[y/squareSize][x/squareSize].toggleFlag();
-        Cell subj = grid[y/squareSize][x/squareSize];
-        if(subj.hasFlag()){
-          show.updateFlagCount(-1);
-        }else if(!subj.hasFlag()){
-          show.updateFlagCount(1);
-        }
       }
     }
   }
