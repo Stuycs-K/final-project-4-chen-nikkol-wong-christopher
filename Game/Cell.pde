@@ -43,6 +43,10 @@ public class Cell {
         fill(255, 0, 0);
         circle(xcoord + squareSize/2.0, ycoord + squareSize/2.0, squareSize);
         flag = true;
+        if(mineHere){
+         // updateFlagCount(-1);
+        }
+
       }
     }
   }
