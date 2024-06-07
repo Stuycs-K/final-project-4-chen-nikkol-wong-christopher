@@ -6,23 +6,20 @@ public class Displays{
   boolean firstMousePress;
   int currentSize;
   int totalMines;
-  int unflagged;
+  int unflaggedMines;
   public Displays(){
     fill(color(29,113,43));
     rect(0, 50, width, height);
     fill(color(200,255,200));
     rect(0, 0, width, 50);
     rect(5, 5, 100, 40);
-    rect(200, 5, 250, 40);
     fill(0);
     textSize(20);
     textAlign(CENTER);
     text("Settings", 5, 15, 100, 25);
     map = new Minefield(this);
     totalMines = map.getMines(); //make accessor to acces minefield total mines varibale
-    fill(0);
-    unflagged = map.getMines();
-    text("Flag Counter: " + unflagged, 300, 30);
+    unflaggedMines = map.getMines();
     settingsOpen = false;
     inGame = true; 
     currentSize = 15;
@@ -31,6 +28,12 @@ public class Displays{
     for (int i = 0; i < handles.length; i++) {
       handles[i] = new Handle(width/4, height/2+(i*200) - 50, 120, 10, handles, this);
     }
+    
+    fill(color(200,255,200));
+    rect(200, 5, 250, 40);
+    fill(0);
+    textSize(20);
+    text("Flag Counter: " + unflaggedMines, 300, 30);
   }
 
   public void lose(){
@@ -58,7 +61,13 @@ public class Displays{
   public void restart(){
     if (!settingsOpen) {
       map = new Minefield(this, currentSize, totalMines);
+      unflaggedMines = totalMines;
       inGame = true;
+      fill(color(200,255,200));
+      rect(200, 5, 250, 40);
+      fill(0);
+      textSize(20);
+      text("Flag Counter: " + unflaggedMines, 300, 30);
     }
   }
   
@@ -153,25 +162,34 @@ public class Displays{
     return firstMousePress;
   }
   
-  public void updateFlagCount(int flag){
-    unflagged = unflagged + flag;
-    fill(color(200,255,200));
-    rect(200, 5, 250, 40);
-    fill(0);
-    textSize(20);
-    text("Flag Counter: " + unflagged, 300, 30);
-  }
-  
   public void apply(int size, int mines) {
     currentSize = size;
     totalMines = mines;
-    unflagged = mines;
+    unflaggedMines = mines;
     fill(color(200,255,200));
     rect(200, 5, 250, 40);
     fill(0);
     textSize(20);
-    text("Flag Counter: " + unflagged, 300, 30);
+    text("Flag Counter: " + unflaggedMines, 300, 30);
     map = new Minefield(this, currentSize, totalMines);
     openSettings();
+  }
+  
+  public void decreaseCounter() {
+    unflaggedMines--;
+    fill(color(200,255,200));
+    rect(200, 5, 250, 40);
+    fill(0);
+    textSize(20);
+    text("Flag Counter: " + unflaggedMines, 300, 30);
+  }
+  
+  public void increaseCounter() {
+    unflaggedMines++;
+    fill(color(200,255,200));
+    rect(200, 5, 250, 40);
+    fill(0);
+    textSize(20);
+    text("Flag Counter: " + unflaggedMines, 300, 30);
   }
 }
