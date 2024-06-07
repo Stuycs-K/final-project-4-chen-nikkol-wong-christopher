@@ -83,7 +83,7 @@ class Handle {
     fill(0);
     textSize(25);
     if(y>width/2+30){
-      textSize(20);
+      textSize(18);
       text(boardS + " X " + boardS, x+295, y-70);
     }else{
       text(mineN + "", x+290, y-70);

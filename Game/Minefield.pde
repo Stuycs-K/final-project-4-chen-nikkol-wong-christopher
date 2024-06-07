@@ -97,9 +97,9 @@ public class Minefield {
       if (x >= 0 && y >= 0 && x < grid.length * squareSize && y < grid.length * squareSize) {
         grid[y/squareSize][x/squareSize].toggleFlag();
         Cell subj = grid[y/squareSize][x/squareSize];
-        if(subj.hasFlag()){
+        if(!subj.isOpen()&&subj.hasFlag()){
           show.updateFlagCount(-1);
-        }else if(!subj.hasFlag()){
+        }else if(!subj.isOpen()&&!subj.hasFlag()){
           show.updateFlagCount(1);
         }
       }

@@ -34,24 +34,44 @@ public class Displays{
   }
 
   public void lose(){
-    fill(255,255,255);
+    fill(0);
     rect(width/4,height/4,width/2,height/2);
-    fill(0,0,0);
-    textSize(25);
-    text("You Clicked On A Mine", width/2, height/2-10);
-    textSize(15);
-    text("Left-Click or Press Space to Restart", width/2, height/2+50);
+    textSize(75);
+    fill(36,234,96);
+    text("GAME\nOVER", width/2, height/2-70);
+    textSize(70);
+    fill(255);
+    text("GAME\nOVER", width/2-2, height/2-68);
+    fill(36,234,96);
+    rect(width/4+8, height/2 +45, width/2-15, 80);
+    fill(0);
+    rect(width/4+15, height/2+55, width/2-30, 60);
+    fill(255);
+    textSize(20);
+    text("You Clicked On A Mine", width/2, height/2+80);
+    textSize(13);
+    text("Left-Click or Press Space to Restart", width/2, height/2+100);
     inGame = false;
   }
 
   public void win(){
-    fill(255,255,255);
+    fill(0);
     rect(width/4,height/4,width/2,height/2);
-    fill(0,0,0);
-    textSize(25);
-    text("You Won!!!", width/2, height/2-10);
-    textSize(15);
-    text("Left-Click or Press Space to Restart", width/2, height/2+50);
+    textSize(75);
+    fill(36,234,96);
+    text("YOU\nWON", width/2, height/2-70);
+    textSize(70);
+    fill(255);
+    text("YOU\nWON", width/2-2, height/2-68);
+    fill(36,234,96);
+    rect(width/4+8, height/2 +45, width/2-15, 80);
+    fill(0);
+    rect(width/4+15, height/2+55, width/2-30, 60);
+    fill(255);
+    textSize(20);
+    text("You Clicked On A Mine", width/2, height/2+80);
+    textSize(13);
+    text("Left-Click or Press Space to Restart", width/2, height/2+100);
     inGame = false;
   }
   
