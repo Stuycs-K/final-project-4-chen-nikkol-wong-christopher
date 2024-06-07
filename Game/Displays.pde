@@ -6,22 +6,26 @@ public class Displays{
   boolean firstMousePress;
   int currentSize;
   int totalMines;
-  
+  int unflagged;
   public Displays(){
     fill(color(29,113,43));
     rect(0, 50, width, height);
     fill(color(200,255,200));
     rect(0, 0, width, 50);
     rect(5, 5, 100, 40);
+    rect(200, 5, 250, 40);
     fill(0);
     textSize(20);
     textAlign(CENTER);
     text("Settings", 5, 15, 100, 25);
     map = new Minefield(this);
+    totalMines = map.getMines(); //make accessor to acces minefield total mines varibale
+    fill(0);
+    unflagged = map.getMines();
+    text("Flag Counter: " + unflagged, 300, 30);
     settingsOpen = false;
     inGame = true; 
     currentSize = 15;
-    totalMines = 40;
     firstMousePress = false;
     handles = new Handle[2];
     for (int i = 0; i < handles.length; i++) {
@@ -149,9 +153,24 @@ public class Displays{
     return firstMousePress;
   }
   
+  public void updateFlagCount(int flag){
+    unflagged = unflagged + flag;
+    fill(color(200,255,200));
+    rect(200, 5, 250, 40);
+    fill(0);
+    textSize(20);
+    text("Flag Counter: " + unflagged, 300, 30);
+  }
+  
   public void apply(int size, int mines) {
     currentSize = size;
     totalMines = mines;
+    unflagged = mines;
+    fill(color(200,255,200));
+    rect(200, 5, 250, 40);
+    fill(0);
+    textSize(20);
+    text("Flag Counter: " + unflagged, 300, 30);
     map = new Minefield(this, currentSize, totalMines);
     openSettings();
   }

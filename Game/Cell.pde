@@ -58,6 +58,10 @@ public class Cell {
         triangle(xcoord + 9, ycoord + 3, xcoord + squareSize - 5, ycoord + 2*squareSize/7 + 3, xcoord + 9, ycoord + 4*squareSize/7 + 3);
         stroke(0);
         flag = true;
+        if(mineHere){
+         // updateFlagCount(-1);
+        }
+
       }
     }
   }

@@ -23,7 +23,6 @@ public class Minefield {
         grid[row][col] = new Cell(squareSize, col * squareSize, row * squareSize + 50);
       }
     }
-    
     foundFlags = 0;
     totalMines = mines;
     minesPlaced = false;
@@ -33,6 +32,9 @@ public class Minefield {
   }
 
   //methods
+  public int getMines(){
+    return totalMines;
+  }
   public void placeMines(int clickedRow, int clickedCol) {
     for (int i = 0; i < totalMines; i++) {
       int row = (int)(Math.random() * grid.length);
@@ -94,6 +96,12 @@ public class Minefield {
       y = y - 50;
       if (x >= 0 && y >= 0 && x < grid.length * squareSize && y < grid.length * squareSize) {
         grid[y/squareSize][x/squareSize].toggleFlag();
+        Cell subj = grid[y/squareSize][x/squareSize];
+        if(subj.hasFlag()){
+          show.updateFlagCount(-1);
+        }else if(!subj.hasFlag()){
+          show.updateFlagCount(1);
+        }
       }
     }
   }

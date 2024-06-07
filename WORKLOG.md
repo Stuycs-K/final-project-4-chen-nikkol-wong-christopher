@@ -87,3 +87,10 @@
 - added increments to the slider handle as well as space to display number of mines and board size selected
 - fixed null pointer exception bug for mouseReleased() with booleans
 
+### 6/3/2024
+- displayed the selections on the settings
+
+### 6/5/2024 - 6/6/2024
+- worked on displaying the flag counter on the top
+- the mechanism behind keeping track of the counter
+
