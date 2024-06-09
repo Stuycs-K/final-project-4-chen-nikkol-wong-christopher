@@ -76,6 +76,7 @@ class Handle {
   }
   
   void display() {
+
     if (this == others[0]) {
       fill(200,255,200);
       rect(width/4-10,height/4-45,270,70);

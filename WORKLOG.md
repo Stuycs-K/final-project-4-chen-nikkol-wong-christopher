@@ -100,3 +100,6 @@
 - worked on displaying the flag counter on the top
 - the mechanism behind keeping track of the counter
 
+### 6/7/2024 
+- worked on changing the graphics for the win and lose end screen
+- worked on a bug with the flag counter

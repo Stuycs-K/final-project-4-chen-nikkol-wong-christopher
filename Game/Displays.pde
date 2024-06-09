@@ -41,26 +41,44 @@ public class Displays{
 
   public void lose(){
     inGame = false;
-    fill(255,255,255);
-    rect(width/4 - 10,height/4,width/2 + 20,height/2);
-    fill(0,0,0);
-    textSize(25);
-    text("You Clicked On A Mine", width/2, height/2-50);
-    textSize(15);
-    text("Left-Click or Press Space to Restart", width/2, height/2+40);
-    text("Press H to hide message and see board", width/2, height/2 + 90);
+    fill(0);
+    rect(width/4,height/4,width/2,height/2);
+    textSize(75);
+    fill(36,234,96);
+    text("GAME\nOVER", width/2, height/2-70);
+    textSize(70);
+    fill(255);
+    text("GAME\nOVER", width/2-2, height/2-68);
+    fill(36,234,96);
+    rect(width/4+8, height/2 +45, width/2-15, 80);
+    fill(0);
+    rect(width/4+15, height/2+55, width/2-30, 60);
+    fill(255);
+    textSize(20);
+    text("You Clicked On A Mine", width/2, height/2+80);
+    textSize(13);
+    text("Left-Click or Press Space to Restart\nPress H to hide message and see board", width/2, height/2+100);
     messageOpen = true;
   }
 
   public void win(){
-    fill(255,255,255);
-    rect(width/4 - 10,height/4,width/2 + 20,height/2);
-    fill(0,0,0);
-    textSize(25);
-    text("You Won!!!", width/2, height/2-50);
-    textSize(15);
-    text("Left-Click or Press Space to Restart", width/2, height/2+40);
-    text("Press H to hide message and see board", width/2, height/2 + 90);
+    fill(0);
+    rect(width/4,height/4,width/2,height/2);
+    textSize(75);
+    fill(36,234,96);
+    text("YOU\nWON", width/2, height/2-70);
+    textSize(70);
+    fill(255);
+    text("YOU\nWON", width/2-2, height/2-68);
+    fill(36,234,96);
+    rect(width/4+8, height/2 +45, width/2-15, 80);
+    fill(0);
+    rect(width/4+15, height/2+55, width/2-30, 60);
+    fill(255);
+    textSize(20);
+    text("You Are So Cool", width/2, height/2+80);
+    textSize(13);
+    text("Left-Click or Press Space\nPress H to hide message and see board", width/2, height/2+95);
     inGame = false;
     messageOpen = true;
   }
