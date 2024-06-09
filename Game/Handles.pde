@@ -78,17 +78,17 @@ class Handle {
   void display() {
     if (this == others[0]) {
       fill(200,255,200);
-      rect(width/4-10,height/4-25,270,70);
+      rect(width/4-10,height/4-45,270,70);
       fill(0);
       textSize(40);
-      text("# of Mines: " + mineN, width/4, height/4-5, 250, 50);
+      text("# of Mines: " + mineN, width/4, height/4-25, 250, 50);
     }
     else {
       fill(200,255,200);
-      rect(width/4-10,height/4+180,270,70);
+      rect(width/4-10,height/4+140,270,70);
       fill(0);
       textSize(30);
-      text("Board Size: " + boardS + " X " + boardS, width/4, height/4+200, 250, 50);
+      text("Board Size: " + boardS + " X " + boardS, width/4, height/4+170, 250, 50);
     }
     
     if (this == others[0]) {

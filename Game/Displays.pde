@@ -26,7 +26,7 @@ public class Displays{
     firstMousePress = false;
     handles = new Handle[2];
     for (int i = 0; i < handles.length; i++) {
-      handles[i] = new Handle(width/4, height/2+(i*200) - 50, 120, 10, handles, this);
+      handles[i] = new Handle(width/4, height/2+(i*190) - 70, 120, 10, handles, this);
     }
     
     fill(color(200,255,200));
