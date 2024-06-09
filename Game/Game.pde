@@ -13,12 +13,6 @@ void keyPressed(){
   if (key == ' ') {
     result.restart();
   }
-  if(key == 'l'){
-    result.lose();
-  }
-  if(key== 'w'){
-    result.win();
-  }
 }
 
 void mousePressed(){
