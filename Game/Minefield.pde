@@ -57,6 +57,7 @@ public class Minefield {
       explore(y/squareSize, x/squareSize);
       if (openedSquares + totalMines == grid.length * grid.length) {
         show.win();
+        won = true;
       }
     }
   }
@@ -83,8 +84,8 @@ public class Minefield {
             target.printNeighbors(neighbors);
           }
         } else {
-          lost = true;
           revealMines();
+          lost = true;
           show.lose();
         }
       }

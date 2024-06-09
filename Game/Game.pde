@@ -13,6 +13,9 @@ void keyPressed(){
   if (key == ' ') {
     result.restart();
   }
+  else if (key == 'h' || key =='H') {
+    result.toggleMessage();
+  }
 }
 
 void mousePressed(){
