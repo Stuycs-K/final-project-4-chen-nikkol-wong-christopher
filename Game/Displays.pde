@@ -69,9 +69,9 @@ public class Displays{
     rect(width/4+15, height/2+55, width/2-30, 60);
     fill(255);
     textSize(20);
-    text("You Clicked On A Mine", width/2, height/2+80);
+    text("You Are So Cool", width/2, height/2+80);
     textSize(13);
-    text("Left-Click or Press Space to Restart", width/2, height/2+100);
+    text("Left-Click or Press Space\nto Show Your Coolness Again", width/2, height/2+95);
     inGame = false;
   }
   
