@@ -56,6 +56,12 @@
 - Added revealMines() to reveal mines after losing and Xs for wrongly placed flags
 - Redrew flags and mines
 
+### 6/7/2024, 6/8/2024, 6/8/2024
+
+- Fixed flag counter
+- Updated settings displays
+- Added option to hide win/lose message
+
 ## Nikkol Chen
 
 ### 5/22/2024

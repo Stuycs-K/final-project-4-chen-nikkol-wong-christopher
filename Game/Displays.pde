@@ -7,6 +7,8 @@ public class Displays{
   int currentSize;
   int totalMines;
   int unflaggedMines;
+  boolean messageOpen;
+  
   public Displays(){
     fill(245, 222, 159);
     rect(0, 50, width, height);
@@ -28,6 +30,7 @@ public class Displays{
     for (int i = 0; i < handles.length; i++) {
       handles[i] = new Handle(width/4, height/2+(i*190) - 70, 120, 10, handles, this);
     }
+    messageOpen = false;
     
     fill(color(200,255,200));
     rect(215, 5, 175, 40);
@@ -37,25 +40,29 @@ public class Displays{
   }
 
   public void lose(){
+    inGame = false;
     fill(255,255,255);
-    rect(width/4,height/4,width/2,height/2);
+    rect(width/4 - 10,height/4,width/2 + 20,height/2);
     fill(0,0,0);
     textSize(25);
-    text("You Clicked On A Mine", width/2, height/2-10);
+    text("You Clicked On A Mine", width/2, height/2-50);
     textSize(15);
-    text("Left-Click or Press Space to Restart", width/2, height/2+50);
-    inGame = false;
+    text("Left-Click or Press Space to Restart", width/2, height/2+40);
+    text("Press H to hide message and see board", width/2, height/2 + 90);
+    messageOpen = true;
   }
 
   public void win(){
     fill(255,255,255);
-    rect(width/4,height/4,width/2,height/2);
+    rect(width/4 - 10,height/4,width/2 + 20,height/2);
     fill(0,0,0);
     textSize(25);
-    text("You Won!!!", width/2, height/2-10);
+    text("You Won!!!", width/2, height/2-50);
     textSize(15);
-    text("Left-Click or Press Space to Restart", width/2, height/2+50);
+    text("Left-Click or Press Space to Restart", width/2, height/2+40);
+    text("Press H to hide message and see board", width/2, height/2 + 90);
     inGame = false;
+    messageOpen = true;
   }
   
   public void restart(){
@@ -102,10 +109,14 @@ public class Displays{
       settingsOpen = false;
       map.redraw();
       if(map.getLose()){
-        lose();
+        if (messageOpen) {
+          lose();
+        }
       }
       else if (map.getWin()) {
-        win();
+        if (messageOpen) {
+          win();
+        }
       }
       else{
         inGame = true;
@@ -187,5 +198,22 @@ public class Displays{
     fill(0);
     textSize(20);
     text("Flag Counter: " + unflaggedMines, 300, 30);
+  }
+  
+  public void toggleMessage() {
+    if (!settingsOpen) {
+      if (messageOpen) {
+        map.redraw();
+        messageOpen = false;
+      }
+      else if (map.getWin()) {
+        win();
+        messageOpen = true;
+      }
+      else if (map.getLose()) {
+        lose();
+        messageOpen = true;
+      }
+    }
   }
 }
