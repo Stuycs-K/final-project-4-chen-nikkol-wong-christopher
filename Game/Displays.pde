@@ -8,7 +8,7 @@ public class Displays{
   int totalMines;
   int unflaggedMines;
   public Displays(){
-    fill(color(29,113,43));
+    fill(245, 222, 159);
     rect(0, 50, width, height);
     fill(color(200,255,200));
     rect(0, 0, width, 50);
@@ -30,7 +30,7 @@ public class Displays{
     }
     
     fill(color(200,255,200));
-    rect(200, 5, 250, 40);
+    rect(215, 5, 175, 40);
     fill(0);
     textSize(20);
     text("Flag Counter: " + unflaggedMines, 300, 30);
@@ -64,7 +64,7 @@ public class Displays{
       unflaggedMines = totalMines;
       inGame = true;
       fill(color(200,255,200));
-      rect(200, 5, 250, 40);
+      rect(215, 5, 175, 40);
       fill(0);
       textSize(20);
       text("Flag Counter: " + unflaggedMines, 300, 30);
@@ -119,18 +119,14 @@ public class Displays{
   
   void drawHandles() {
     if (settingsOpen) {
-      fill(color(29,113,43));
+      fill(245, 222, 159);
       rect(0, 50, width, height);
-      fill(66,193,88);
-      rect(width/4-10,height/4-25,270,70);
-      rect(width/4-10,height/4+180,270,70);
+      fill(200,255,200);
       rect(width/2 - 100, 455, 200, 70);
       fill(0);
-      textSize(50);
-      text("# of Mines", width/4, height/4-5, 250, 50);
-      text("Board Size", width/4, height/4+200, 250, 50);
+      textSize(40);
       text("Apply", width/4, 470, 250, 50);
-    
+      
       for (int i = 0; i < handles.length; i++) {
         handles[i].update();
         handles[i].display();
@@ -167,7 +163,7 @@ public class Displays{
     totalMines = mines;
     unflaggedMines = mines;
     fill(color(200,255,200));
-    rect(200, 5, 250, 40);
+    rect(215, 5, 175, 40);
     fill(0);
     textSize(20);
     text("Flag Counter: " + unflaggedMines, 300, 30);
@@ -178,7 +174,7 @@ public class Displays{
   public void decreaseCounter() {
     unflaggedMines--;
     fill(color(200,255,200));
-    rect(200, 5, 250, 40);
+    rect(215, 5, 175, 40);
     fill(0);
     textSize(20);
     text("Flag Counter: " + unflaggedMines, 300, 30);
@@ -187,7 +183,7 @@ public class Displays{
   public void increaseCounter() {
     unflaggedMines++;
     fill(color(200,255,200));
-    rect(200, 5, 250, 40);
+    rect(215, 5, 175, 40);
     fill(0);
     textSize(20);
     text("Flag Counter: " + unflaggedMines, 300, 30);
