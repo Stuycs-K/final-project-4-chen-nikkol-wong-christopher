@@ -76,17 +76,19 @@ class Handle {
   }
   
   void display() {
-
-    
-    fill(255);
-    rect(x+270, y-100, 50,50);
-    fill(0);
-    textSize(25);
-    if(y>width/2+30){
-      textSize(15);
-      text(boardS + " X " + boardS, x+295, y-70);
-    }else{
-      text(mineN + "", x+290, y-70);
+    if (this == others[0]) {
+      fill(200,255,200);
+      rect(width/4-10,height/4-45,270,70);
+      fill(0);
+      textSize(40);
+      text("# of Mines: " + mineN, width/4, height/4-25, 250, 50);
+    }
+    else {
+      fill(200,255,200);
+      rect(width/4-10,height/4+140,270,70);
+      fill(0);
+      textSize(30);
+      text("Board Size: " + boardS + " X " + boardS, width/4, height/4+170, 250, 50);
     }
     
     if (this == others[0]) {
