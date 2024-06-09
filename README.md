@@ -7,27 +7,24 @@ Period: Period 4
 Group Members: Nikkol Chen and Christopher Wong
 
 Group Name: The Stuy 51ers
-## Overview
-### Brief Description: 
-For our project, we plan to recreate Minesweeper in Processing. It will likely be mostly similar to regular Minesweeper. Left-clicking will explore a square, either excavating the square and its surroundings or finding a mine and ending the game. Right-clicking places flags to mark potential mines, preventing those squares from being left-clicked unless the flag is removed by right-clicking again. We hope to add settings to toggle the board size and the number of mines. We also hope to add cool graphics if time allows, especially when finding a mine or winning.
 
-### Expanded Description: 
-Critical Features:
-- Cells class to represent each square and its status (open vs. unopened, flagged, mines, count of surrounding mines)
-- 2D array of cells to represent map of the game
-Left-clicking explores the cell and any neighboring cells if the initial cell has no surrounding mines (recursive)
-- Right-clicking places (or removes) flags to mark potential mines (can’t left-click flags)
-- Initialize mines after first click (can’t start on a mine, starting chunk)
-Winning/losing procedures: End game, open new board
+### Project Description: 
+For our project, we plan to recreate Minesweeper in Processing. Left-clicking will explore a square, either excavating the square or finding a mine and ending the game. If the cell has no mines as neighbors, it recursively explores said neighboring cells. Right-clicking places flags to mark potential mines, preventing those squares from being left-clicked. The flag can be removed by right-clicking again. 
 
-Nice-to-Have Features:
-- Counter to show number of unflagged mines remaining
-- Cool graphics for winning, losing, and more
-- Changing board size and number of mines (edit settings with user input)
-- Reveal remaining/false mines when losing
+The mines are initialized at first click, preventing the user from starting on a mine. All mines are revealed upon losing, as well as any false flags. We also added settings to toggle the board size and the number of mines and a counter to show the number of unflagged mines remaining.
 
-## Instructions
-- Left-click to explore cells
-- Right-click to place or remove flags
-- Click on settings button to open and close settings (settings menu in progress)
-- Press any key to restart and reset board
+### Directions: 
+- No additional steps to compile or run project
+
+- Left-click explores cells
+- Right-click places and removes flags
+
+- Settings button opens and closes settings menu
+- Sliding handles in settings menu changes board size and number of mines
+- Apply button in settings menu applies settings from handles
+
+- Space key resets board
+- Left-click resets board when game ends after winning or losing
+- H key hides win/lose message to see board after game ends
+
+- No major bugs to avoid (to our knowledge)
