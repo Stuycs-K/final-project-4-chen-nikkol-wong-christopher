@@ -28,3 +28,8 @@ The mines are initialized at first click, preventing the user from starting on a
 - H key hides win/lose message to see board after game ends
 
 - No major bugs to avoid (to our knowledge)
+
+### Links:
+
+- Video Presentation: https://drive.google.com/file/d/11V1hBUaBdHJvpAaWjXEMeVAjM2Bb0LgF/view?usp=drive_link
+- Project Prototype: https://docs.google.com/document/d/1iNWbHTCh9O12WSZoB6sNMkpJNXrDkkfHdVjcdICW2oQ/edit?usp=drive_link
